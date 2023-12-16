@@ -52,13 +52,11 @@ class ReadData:
         """
         for column, type_col in self.__dict_types.items():
             if type_col == "float":
-                print(f"-------------------------------\ncolumn {column} is float")
                 self.remove_outlier_for_col(column)
-                print(f"\n---------------------------------")
 
     def remove_outlier_for_col(self, column):
         column_values = self.__df.iloc[:, column]
-        column_values = pd.to_numeric(column_values.replace('-', np.nan), errors='coerce')
+        column_values = pd.to_numeric(column_values.str.replace(',', ''), errors='coerce')
         Q1 = column_values.quantile(0.25)
         Q3 = column_values.quantile(0.75)
         IQR = Q3 - Q1
@@ -70,16 +68,20 @@ class ReadData:
         lower_bound = Q1 - 1.5 * IQR
         upper_bound = Q3 + 1.5 * IQR
 
-        print(lower_bound)
-        print(upper_bound)
-        print(self.__df.shape)
         outlier_index_rows = np.where((column_values < lower_bound) | (column_values > upper_bound))[0]
+        if len(outlier_index_rows) > 0:
+            self.__df.drop(self.__df.index[outlier_index_rows], inplace=True)
 
-        print(outlier_index_rows)
-
-        df_no_outliers_actual_values = self.__df.drop(index=outlier_index_rows)
-
-        #print(self.__df)
+        column_values = self.__df.iloc[:, column]
+        column_values = pd.to_numeric(column_values.str.replace(',', ''), errors='coerce')
+        mean = np.nanmean(column_values)
+        
+        for index, row in self.__df.iterrows():
+            if row[column] == '-':
+                row[column] = mean
+            else:
+                row[column] = float(row[column].replace(',', ''))
+        
 
     @staticmethod
     def elem_is_float(string):
