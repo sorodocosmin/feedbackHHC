@@ -1,0 +1,8 @@
+# Ignore all folders named "myenv" which are created by the vendor commmand
+**/myenv/
+
+# Ignore all files named ".idea" at any level
+**/.idea
+
+#ignore all pycache folders
+**/__pycache__/
