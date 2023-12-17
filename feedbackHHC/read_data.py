@@ -1,5 +1,10 @@
 import pandas as pd
 import numpy as np
+from matplotlib import get_backend
+import matplotlib.pyplot as plt
+
+
+
 
 class ReadData:
     def __init__(self, text_file_name):
@@ -104,6 +109,66 @@ class ReadData:
 
     def get_dataframe(self):
         return self.__df
+    
+    def visualize_mean_and_median_as_barplots(self):
+        """
+        Visualize the mean and median for each column using barplots
+        :return:
+        """
+        dict_mean_median = {}
+        for column, type_col in self.__dict_types.items():
+            if type_col == "float":
+                column_values = self.__df.iloc[:, column]
+                mean = np.nanmean(column_values)
+                median = np.nanmedian(column_values)
+                dict_mean_median[self.__df.columns.values[column]] = [mean, median]
+
+        df_mean_median = pd.DataFrame.from_dict(dict_mean_median, orient='index', columns=['mean', 'median'])
+
+        ax = df_mean_median.plot.bar()
+        
+        for i, p in enumerate(ax.patches):
+            offset = -1 if p.get_height() >= 0 else 2
+            ax.annotate(f'{p.get_height():.2f}', (p.get_x() + p.get_width() / 2., p.get_height()),
+                        ha='center', va='bottom' if p.get_height() >= 0 else 'top',
+                        xytext=(0, offset), textcoords='offset points', rotation='vertical')
+
+        backend = get_backend().lower()
+        if "qt" in backend:
+            figManager = plt.get_current_fig_manager()
+            figManager.window.showMaximized()
+        elif "tk" in backend:
+            figManager = plt.get_current_fig_manager()
+            figManager.window.state('zoomed')
+        elif "wx" in backend:
+            figManager = plt.get_current_fig_manager()
+            figManager.frame.Maximize(True)
+        elif "gtk" in backend:
+            figManager = plt.get_current_fig_manager()
+            figManager.window.maximize()
+        else:
+            plt.show()
+
+        plt.show()
+
+
+
+                
+        
+                
+
+
+
+
+        
+
+
+        
+                
+
+
+
+
 
 
 

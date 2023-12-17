@@ -1,6 +1,7 @@
 from read_data import ReadData
 import numpy as np
 import time as t
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -25,7 +26,12 @@ def main():
 
     print("--- %s seconds ---" % (t.time() - start_time))
 
+    rd.visualize_mean_and_median_as_barplots()
+
+
+
 
 if __name__ == '__main__':
     main()
+    
 
