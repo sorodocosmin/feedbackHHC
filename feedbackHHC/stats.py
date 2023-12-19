@@ -32,8 +32,7 @@ class Stats:
         means = [values[0] for values in dict_mean_median.values()]
         medians = [values[1] for values in dict_mean_median.values()]
 
-        bar_width = 0.45
-        space_between_bars = 0.2
+        bar_width = 0.35
         index = np.arange(len(columns))
 
         bars_mean = plt.bar(index, means, bar_width, label='Mean', color='blue')
@@ -42,7 +41,7 @@ class Stats:
         plt.xlabel('Columns')
         plt.ylabel('Values')
         plt.title('Mean and Median for Numeric Columns')
-        plt.xticks(index + bar_width + space_between_bars, columns, rotation='vertical')
+        plt.xticks(index + bar_width/2, columns, rotation='vertical')
         # Rotate x-axis labels vertically
         plt.legend()
 
@@ -50,7 +49,7 @@ class Stats:
         self.autolabel(bars_mean, means)
         self.autolabel(bars_median, medians)
 
-        plt.savefig('mean_median.png', dpi=300)
+        # plt.savefig('mean_median.png', dpi=300)
 
         plt.show()
 
