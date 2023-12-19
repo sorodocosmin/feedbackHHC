@@ -1,0 +1,21 @@
+<preprocess>
+    <empty_percentange>70</empty_percentange>
+    <input_file>HH_Provider_Oct2023.csv</input_file>
+    <preprocess_file>Preprocessed_data.csv</preprocess_file>
+    <irrelevantAttributes>
+        <attribute>State</attribute>
+        <attribute>CMS Certification Number (CCN)</attribute>
+        <attribute>Provider Name</attribute>
+        <attribute>Address</attribute>
+        <attribute>City</attribute>
+        <attribute>Town</attribute>
+        <attribute>ZIP Code</attribute>
+        <attribute>Telephone Number</attribute>
+        <attribute>Type of Ownership</attribute>
+        <attribute>Certification Date</attribute>
+        <attribute>Footnote</attribute>
+        <attribute>DTC Performance Categorization</attribute>
+        <attribute>PPR Performance Categorization</attribute>
+        <attribute>PPH Performance Categorization</attribute>
+    </irrelevantAttributes>
+</preprocess>
