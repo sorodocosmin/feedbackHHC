@@ -1,0 +1,134 @@
+On the random forest classifier, we tried an hyperparameters tunning. using GridSearch and also Random Search, here are the parameters we tried to tune:
+    possible_parameters_rf = {
+        "n_estimators": [10, 100, 200, 500, 750, 1_000],
+        "criterion": ["gini", "entropy"],
+        # the maximum depth of the tree is represented by the nr of features which is 12
+        "max_depth": [None, 5, 7, 8, 9, 10],
+        # Bootstrap means that instead of training on all the observations,
+        # each tree of RF is trained on a subset of the observations
+        "bootstrap": [True, False]
+    }
+
+And here are the results that we got :
+1. Grid Search
+    - Best parameters: {'bootstrap': False, 'criterion': 'entropy', 'max_depth': None, 'n_estimators': 750}
+    - Best score: 0.8030440587449933 -> which represents the best score that we got on the CrossValidation(=5)
+    - Time elapsed: 613.4225769042969s ~ 10.22 minutes
+2. Random Search
+    - Best parameters: {'bootstrap': False, 'criterion': 'gini', 'max_depth': 10, 'n_estimators': 750}
+    - Best score: 0.7926340898976413
+    - Time elapsed: 29.964808225631714s ~ 0.5 minutes
+
+We can see that the GridSearch took much more time than the RandomSearch, and the best score is not such a big difference,
+the time difference for RandomSearch is with 95% less than the time for GridSearch which considering the small diff
+between the best scores, it is very good.
+
+
+Now we run the algorithm of 10 different random splits of the data into training and test sets, (25% for the test), using the
+default parameters for the random forest classifier, and here are the results:
+Time elapsed for training the data: 0.7668266296386719
+Accuracy testing: 0.8062449959967974
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7319371700286865
+Accuracy testing: 0.7814251401120896
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7144777774810791
+Accuracy testing: 0.7966373098478783
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 0.7774944305419922
+Accuracy testing: 0.8030424339471577
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 0.7237594127655029
+Accuracy testing: 0.8062449959967974
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7021384239196777
+Accuracy testing: 0.8062449959967974
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7261097431182861
+Accuracy testing: 0.8206565252201762
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7085082530975342
+Accuracy testing: 0.7814251401120896
+Accuracy training: 1.0
+
+Time elapsed for training the data: 0.7056319713592529
+Accuracy testing: 0.7910328262610088
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 0.7310352325439453
+Accuracy testing: 0.8086469175340272
+Accuracy training: 0.9994662396583934
+
+Average accuracy testing: 0.800160128102482
+Average accuracy training: 0.999679743795036
+Average time elapsed: 0.7287919044494628
+
+Now, we will try to use the best parameters that we got from the GridSearch, and see if we can get better results:
+Time elapsed for training the data: 9.030748128890991
+Accuracy testing: 0.8190552441953562
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 9.191967487335205
+Accuracy testing: 0.8214571657325861
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 10.24408745765686
+Accuracy testing: 0.7982385908726981
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 10.508450746536255
+Accuracy testing: 0.8190552441953562
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 10.389696598052979
+Accuracy testing: 0.8102481985588471
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 15.116722106933594
+Accuracy testing: 0.8254603682946358
+Accuracy training: 0.9994662396583934
+
+Time elapsed for training the data: 13.557149648666382
+Accuracy testing: 0.8094475580464372
+Accuracy training: 1.0
+
+Time elapsed for training the data: 11.55257797241211
+Accuracy testing: 0.8046437149719776
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 11.245923042297363
+Accuracy testing: 0.8014411529223379
+Accuracy training: 0.9997331198291967
+
+Time elapsed for training the data: 12.130078792572021
+Accuracy testing: 0.8094475580464372
+Accuracy training: 0.9994662396583934
+
+Average accuracy testing: 0.8118494795836669
+Average accuracy training: 0.999599679743795
+Average time elapsed: 11.296740198135376
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+In cele ce urmeaza, se va folosi Random Forest Classifier cu parametrii default
+Cross Fold Validation - Fold = 100
+Cross fold validation: 100
+Cross fold validation: 0.8020768136557612
+Time elapsed for cross fold validation: 71.98484778404236
+
+
+
+
+
+Before Feature selection :
+Average accuracy testing: 0.8471577261809449
+Average accuracy training: 0.9995463037096343

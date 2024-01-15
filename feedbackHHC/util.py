@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
 
 from random_forest_classifier import Random_Forest_Classifier
 import pandas as pd
@@ -28,7 +29,10 @@ def split_train_and_test_data(df, name_output_column, test_size=0.2):
     datas_without_output = df.drop(name_output_column, axis=1)  # axis=1 means column
     output = df[name_output_column].astype('category').cat.codes  # convert the float numbers to numeric values
     # ex : 0.5 -> 0, 1.5 -> 1, 2.0 -> 2, ..etc
-    x_train, x_test, y_train, y_test = train_test_split(datas_without_output.values, output.values, test_size=test_size)
+    # print(output)
+    # scaler = StandardScaler()
+    # datas_without_output = scaler.fit_transform(datas_without_output)
+    x_train, x_test, y_train, y_test = train_test_split(datas_without_output, output.values, test_size=test_size)
 
     return x_train, y_train, x_test, y_test
 
@@ -38,7 +42,7 @@ if __name__ == '__main__':
     data = {
         'Feature1': [1, 2, 3, 4, 5],
         'Feature2': [5, 4, 3, 2, 1],
-        'Target': [0.5, 1.5, 2.0, 3.245, 0.5]
+        'Target': [3.245, 1.5, 5.0, 3.245, 5.0]
     }
 
     df1 = pd.DataFrame(data)
@@ -54,7 +58,7 @@ if __name__ == '__main__':
     model_rf = Random_Forest_Classifier(x1_train, y1_train)
     model_rf.train()
 
-    predicted_labels1 = model_rf.predict_instance(x1_test)
+    predicted_labels1 = model_rf.predict(x1_test)
     print(f"Predicted labels: {predicted_labels1}\n")
     print(f"Accuracy: {get_accuracy(y1_test, predicted_labels1)}\n")
 
