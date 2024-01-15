@@ -10,7 +10,7 @@ class Stats:
     def __init__(self):
         pp = Preprocess()
         self.data = pd.read_csv(pp.preprocess_file)
-        self.__dict_types = pp.asign_type_to_columns(self.data)
+        self.__dict_types = pp.assign_type_to_columns(self.data)
         self.dict_mean_median = self.find_mean_and_median()
 
     def find_mean_and_median(self):

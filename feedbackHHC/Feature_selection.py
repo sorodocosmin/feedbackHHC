@@ -1,18 +1,16 @@
-import time
-
-import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
-import seaborn as sns
 
-from sklearn.model_selection import cross_val_score
-from sklearn import svm
 
 class Feature_selection:
     def __init__(self, df):
         self.df = df
 
     def apply_feature_selection(self):
+        """
+        Apply a feature section using a correlation matrix, matrix which was obtained using the Pearson correlation
+        It also saves the new dataset to a csv file
+        :return: None
+        """
         corr_matrix = self.df.corr()
 
         # plt.figure(figsize=(40, 40))

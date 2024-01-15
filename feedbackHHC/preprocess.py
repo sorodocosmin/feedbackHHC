@@ -5,7 +5,7 @@ import numpy as np
 
 class Preprocess:
     def __init__(self):
-        self.empty_percentange, self.irrelevant_attributes, \
+        self.empty_percentage, self.irrelevant_attributes, \
             self.input_file, self.preprocess_file = read_xml_file()
         self.unprocessed_data = pd.read_csv(self.input_file)
         self.preprocessed_data = self.unprocessed_data
@@ -14,7 +14,7 @@ class Preprocess:
     def preprocess(self):
         self.drop_irrelevant_attributes(self.irrelevant_attributes)
         self.drop_almost_empty_columns()
-        self.column_types = self.asign_type_to_columns(self.preprocessed_data)
+        self.column_types = self.assign_type_to_columns(self.preprocessed_data)
         self.preprocessed_data = self.transform_to_numeric(self.preprocessed_data)
 
         # drop rows that have empty values
@@ -43,11 +43,11 @@ class Preprocess:
         # drop the columns that have more than empty_percentange empty values
         total_rows = len(self.preprocessed_data.index)
         for column in count_empty:
-            if count_empty[column] > self.empty_percentange * total_rows:
+            if count_empty[column] > self.empty_percentage * total_rows:
                 self.preprocessed_data.drop(column, axis=1, inplace=True)
 
     @staticmethod
-    def asign_type_to_columns(data):
+    def assign_type_to_columns(data):
         column_types = {}
         for index, row in data.iterrows():
             if '-' not in row.values:
