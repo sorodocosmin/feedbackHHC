@@ -1,0 +1,8 @@
+Time elapsed for training: 19.15622043609619
+Neural Network Accuracy testing: 0.7678142514011209
+
+Neural Network Accuracy train: 0.9994662396583934
+
+Cross fold validation: 100
+Cross fold validation: 0.7827311522048364
+Time elapsed for cross fold validation: 2411.796178817749
