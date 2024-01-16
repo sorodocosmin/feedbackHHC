@@ -128,7 +128,7 @@ Time elapsed for cross fold validation: 71.98484778404236
 
 
 
-
+--Not to include in plots--
 Before Feature selection :
 Average accuracy testing: 0.8471577261809449
 Average accuracy training: 0.9995463037096343

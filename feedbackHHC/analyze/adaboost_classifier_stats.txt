@@ -1,0 +1,117 @@
+When performing the hyperparameter tuning, we will use the following values for the hyperparameters:
+1. For GridSearchCV :
+Fitting 10 folds for each of 60 candidates, totalling 600 fits
+Best parameters: {'estimator': DecisionTreeClassifier(max_depth=2), 'learning_rate': 0.5, 'n_estimators': 100} ; Best score: 0.7363329768270945
+Time elapsed for grid Search: 72.54500985145569
+2. For RandomizedSearchCV :
+Best parameters: {'n_estimators': 10, 'learning_rate': 1.0, 'estimator': DecisionTreeClassifier(max_depth=2)} ; Best score: 0.71764064171123
+Time elapsed for random Search: 12.015170097351074
+Fitting 10 folds for each of 10 candidates, totalling 100 fits
+
+Now, we will use the best parameters obtained from the hyperparameter tuning to train the model and evaluate it on the test set.
+
+
+
+This are the results when applying the best parameters obtained from the hyperparameter tuning:
+Time elapsed for training the data: 0.5630552768707275
+Accuracy testing: 0.7357886309047238
+Accuracy training: 0.7632772884974647
+
+Time elapsed for training the data: 0.5764400959014893
+Accuracy testing: 0.7205764611689351
+Accuracy training: 0.7405924739791834
+
+Time elapsed for training the data: 0.561969518661499
+Accuracy testing: 0.7269815852682145
+Accuracy training: 0.7477982385908727
+
+Time elapsed for training the data: 0.5615572929382324
+Accuracy testing: 0.7173738991192954
+Accuracy training: 0.7331198291966907
+
+Time elapsed for training the data: 0.5704197883605957
+Accuracy testing: 0.7069655724579663
+Accuracy training: 0.7269815852682145
+
+Time elapsed for training the data: 0.5774576663970947
+Accuracy testing: 0.7477982385908727
+Accuracy training: 0.7608753669602348
+
+Time elapsed for training the data: 0.6286957263946533
+Accuracy testing: 0.7477982385908727
+Accuracy training: 0.7467307179076594
+
+Time elapsed for training the data: 0.5868113040924072
+Accuracy testing: 0.7061649319455564
+Accuracy training: 0.7485988791032826
+
+Time elapsed for training the data: 0.5682556629180908
+Accuracy testing: 0.7205764611689351
+Accuracy training: 0.7611422471310382
+
+Time elapsed for training the data: 0.5785617828369141
+Accuracy testing: 0.7013610888710968
+Accuracy training: 0.7165732586068855
+
+Average accuracy testing: 0.7231385108086469
+Average accuracy training: 0.7445689885241527
+Average time elapsed: 0.5773224115371705
+
+------------------------------------------------------------------------------------------------------------------------
+DEFAULT PARAMETERS
+and this are the results when applying the default parameters:
+Time elapsed for training the data: 0.19048213958740234
+Accuracy testing: 0.7133706965572458
+Accuracy training: 0.6973578863090473
+
+Time elapsed for training the data: 0.1864638328552246
+Accuracy testing: 0.6933546837469976
+Accuracy training: 0.7053642914331465
+
+Time elapsed for training the data: 0.18806099891662598
+Accuracy testing: 0.5868694955964772
+Accuracy training: 0.5858019749132639
+
+Time elapsed for training the data: 0.1932981014251709
+Accuracy testing: 0.6845476381104884
+Accuracy training: 0.678142514011209
+
+Time elapsed for training the data: 0.18749666213989258
+Accuracy testing: 0.7133706965572458
+Accuracy training: 0.6909527622097679
+
+Time elapsed for training the data: 0.19751191139221191
+Accuracy testing: 0.6973578863090473
+Accuracy training: 0.6906858820389645
+
+Time elapsed for training the data: 0.19359779357910156
+Accuracy testing: 0.6413130504403523
+Accuracy training: 0.6680010675206832
+
+Time elapsed for training the data: 0.19550085067749023
+Accuracy testing: 0.6901521216973578
+Accuracy training: 0.7101681345076061
+
+Time elapsed for training the data: 0.1894690990447998
+Accuracy testing: 0.7101681345076061
+Accuracy training: 0.7048305310915399
+
+Time elapsed for training the data: 0.19365525245666504
+Accuracy testing: 0.6541232986389112
+Accuracy training: 0.6226314384841206
+
+Average accuracy testing: 0.678462770216173
+Average accuracy training: 0.6753936482519349
+Average time elapsed: 0.1915536642074585
+
+We can see a slightly improving in the accuracy of testing -> from 67% to 72%.
+However, the time elapsed was also increased from 0.19 to 0.57.
+
+------------------------------------------------------------------------------------------------------------------------
+CV EVALUATION WITH FOLD = 10
+
+Cross fold validation: 100
+Cross fold validation: 0.7531365576102418
+Time elapsed for cross fold validation: 67.16618204116821
+
+
