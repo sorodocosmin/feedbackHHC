@@ -2,8 +2,6 @@ import time
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 
-import util
-
 from hyperparameter_tunning import grid_search
 from hyperparameter_tunning import random_search
 import pandas as pd
@@ -134,15 +132,15 @@ if __name__ == '__main__':
     # print(f"Average time elapsed: {sum(time_elapsed) / nr_tests}")
 
     # compute cross fold validation
-    x1_train, labels1_train, x1_test, labels1_test = (
-        util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
-
-    model_rf = Random_Forest_Classifier(x1_train, labels1_train)
-    model_rf.train()
-    start_time = time.time()
-    cross_f_score = model_rf.cross_fold_validation()
-    print(f"Cross fold validation: {len(cross_f_score)}")
-    print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
-    print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
+    # x1_train, labels1_train, x1_test, labels1_test = (
+    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
+    #
+    # model_rf = Random_Forest_Classifier(x1_train, labels1_train)
+    # model_rf.train()
+    # start_time = time.time()
+    # cross_f_score = model_rf.cross_fold_validation()
+    # print(f"Cross fold validation: {len(cross_f_score)}")
+    # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
+    # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
 
 

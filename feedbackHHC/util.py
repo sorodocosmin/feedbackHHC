@@ -28,13 +28,25 @@ def split_train_and_test_data(df, name_output_column, test_size=0.2):
     """
     datas_without_output = df.drop(name_output_column, axis=1)  # axis=1 means column
     output = df[name_output_column].astype('category').cat.codes  # convert the float numbers to numeric values
-    # ex : 0.5 -> 0, 1.5 -> 1, 2.0 -> 2, ..etc
-    # print(output)
+    # ex : 0.5 -> 0, 1.0 -> 1, 1.5-> 2, 2.0 -> 3, 2.5 -> 4, 3.0 -> 5, 3.245 ->6, ..etc
     # scaler = StandardScaler()
     # datas_without_output = scaler.fit_transform(datas_without_output)
     x_train, x_test, y_train, y_test = train_test_split(datas_without_output, output.values, test_size=test_size)
 
     return x_train, y_train, x_test, y_test
+
+
+def get_classes(list_labels):
+    """
+    Get the classes from the labels
+    :param list_labels: a list of the labels
+    :return: a list in sorted order of labels
+    """
+    set_labels = set()
+    for label in list_labels:
+        set_labels.add(label)
+
+    return sorted(list(set_labels))
 
 
 if __name__ == '__main__':
