@@ -10,7 +10,6 @@ import pandas as pd
 import numpy as np
 
 
-
 class Random_Forest_Classifier:
     def __init__(self, x_train, y_train):
         """
@@ -45,11 +44,9 @@ class Random_Forest_Classifier:
         return cross_val_score(self.__model, self.__x_train, self.__y_train, cv=fold)
 
 
-
-
 if __name__ == '__main__':
     # here, we will make a Hyperparameter tunning using Grid Search and Random Search for the Random Forest Classifier
-    model = RandomForestClassifier()
+    # model = RandomForestClassifier()
     # possible_parameters_rf = {
     #     "n_estimators": [10, 100, 200, 500, 750, 1_000],
     #     "criterion": ["gini", "entropy"],
