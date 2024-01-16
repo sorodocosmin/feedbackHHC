@@ -1,0 +1,5 @@
+Time elapsed for training: 0.0022590160369873047 seconds
+Accuracy testing Bayes Naive: 0.6877502001601281
+Accuracy training Bayes Naive: 0.7227115025353616
+Cross-Validation Scores: 0.7126813655761023
+Time elapsed for Cross-Validation : 0.43640947341918945 seconds
