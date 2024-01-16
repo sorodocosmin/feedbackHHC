@@ -16,7 +16,7 @@ class NeuralNetworkClassifier:
     def train(self):
         self.__model.fit(self.__x_train, self.__y_train)
 
-    def predict_instance(self, test):
+    def predict(self, test):
         return self.__model.predict(test)
     
     def cross_fold_validation(self, fold=100):
@@ -38,10 +38,10 @@ if __name__ == "__main__":
     model_nn = NeuralNetworkClassifier(x_train_normalized, labels_train)
     model_nn.train()
     print(f"Time elapsed for training: {time.time() - start_time}")
-    predicted_labels_test_nn = model_nn.predict_instance(x_test_normalized)
+    predicted_labels_test_nn = model_nn.predict(x_test_normalized)
     print(f"Neural Network Accuracy testing: {util.get_accuracy(labels_test, predicted_labels_test_nn)}\n")
 
-    predicted_labels_train_nn = model_nn.predict_instance(x_train_normalized)
+    predicted_labels_train_nn = model_nn.predict(x_train_normalized)
     print(f"Neural Network Accuracy train: {util.get_accuracy(labels_train, predicted_labels_train_nn)}\n")
 
     start_time = time.time()

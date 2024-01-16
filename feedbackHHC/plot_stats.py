@@ -23,7 +23,7 @@ def print_plot(list_values, list_labels, title, x_label, y_label, color, horizon
 
     # Add data labels on top of the bars
     mini = 0
-    maxi = 1
+    maxi = 2500
     plt.ylim(mini, maxi)  # Adjust the y-axis limits for better visualization
     plt.title(title, fontsize=16, fontweight='bold')
     plt.xlabel(x_label, fontsize=18)
@@ -31,7 +31,6 @@ def print_plot(list_values, list_labels, title, x_label, y_label, color, horizon
 
     # Customize the horizontal line appearance
     if horizontal_line_value is not None:
-        horizontal_line_value = max(list_values)
         plt.axhline(y=horizontal_line_value, color='red', linestyle='--', linewidth=2,
                     label=f'Horizontal Line at ~ {horizontal_line_value:.2f}')
         plt.legend()
@@ -82,6 +81,20 @@ list_values_rf_time_hyper = [0.7287919044494628, 11.296740198135376]
 list_values_ab_accuracy_testing = [0.678462770216173, 0.7231385108086469]
 list_values_rf_accuracy_testing = [0.800160128102482, 0.8118494795836669]
 
+list_values_alg_testing = [0.7231385108086469, 0.8118494795836669, 0.6877502001601281, 0.7678142514011209]
+list_name_alg_testing = ['AdaBoost', 'RandomForest', 'NaiveBayes', 'NeuralNetwork']
+list_values_alg_time = [0.5773224115371705, 0.7668266296386719, 0.43640947341918945, 19.15622043609619]
+list_values_alg_time_cv = [67.16618204116821, 71.98484778404236, 0.43640947341918945, 2411.796178817749]
+
+rf = 0.8020768136557612
+# pie_chart(100 - rf * 100, 'RandomForest Accuracy at CV (Fold=100)')
+nb = 0.7126813655761023
+pie_chart(100 - nb * 100, 'NaiveBayes Accuracy at CV (Fold=100)')
+ab = 0.7531365576102418
+pie_chart(100 - ab * 100, 'AdaBoost Accuracy at CV (Fold=100)')
+nn = 0.7827311522048364
+pie_chart(100 - nn * 100, 'NeuralNetwork Accuracy at CV (Fold=100)')
+
 # print_plot(list_values_ab_time_hyper, list_labels, 'Time took on training before and after hyperparameters tunning',
 #            'AdaBoost', 'Time', 'skyblue')
 
@@ -93,5 +106,7 @@ list_values_rf_accuracy_testing = [0.800160128102482, 0.8118494795836669]
 # print_plot(list_values_rf_time_hyper, list_labels, 'Time took on training before and after hyperparameters tunning',
 #            'RandomForest', 'Time', 'forestgreen')
 
-print_plot(list_values_rf_accuracy_testing, list_labels, 'Accuracy testing before and after hyperparameters tunning',
-           'RandomForest', 'Accuracy', 'forestgreen', horizontal_line_value=1.0)
+# print_plot(list_values_rf_accuracy_testing, list_labels, 'Accuracy testing before and after hyperparameters tunning',
+#            'RandomForest', 'Accuracy', 'forestgreen', horizontal_line_value=1.0)
+# print_plot(list_values_alg_time_cv, list_name_alg_testing, 'Time for Cross Validation (Fold=100) for all models',
+#            'Models', 'Time (in seconds)', 'tomato')
