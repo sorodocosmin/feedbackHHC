@@ -11,7 +11,7 @@ import util
 
 def main():
     # Load the data
-    df = pd.read_csv("Final_data.csv")
+    df = pd.read_csv("Final_data.csv", dtype='float')
 
     x1_train, labels1_train, x1_test, labels1_test = (
         util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
@@ -40,7 +40,6 @@ def main():
             fpr, tpr, _ = roc_curve(y_test_bin[:, i], y_score[:, i])
             roc_auc = auc(fpr, tpr)
 
-            # Plot ROC curve
             plt.plot(fpr, tpr, lw=2, label=f'{model_name} (AUC = {roc_auc:.2f})')
 
         plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
