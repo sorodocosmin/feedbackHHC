@@ -2,7 +2,9 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import json
 import database_handler_forUI as db
-
+import psycopg2
+from profile_page import profile_page
+from estimate_quality import main_page
 
 #Layout
 st.set_page_config(
@@ -34,7 +36,9 @@ def search(keyword):
     )
     cursor = connection.cursor()
 
-    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating FROM homecare WHERE address LIKE '%{keyword}%' OR zip_code LIKE '%{keyword}%' OR city_town LIKE '%{keyword}%' OR state LIKE '%{keyword}%'")
+    keyword_lower = keyword.lower()
+
+    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating FROM homecare WHERE LOWER(address) LIKE '%{keyword_lower}%' OR LOWER(zip_code) LIKE '%{keyword_lower}%' OR LOWER(city_town) LIKE '%{keyword_lower}%' OR LOWER(state) LIKE '%{keyword_lower}%'")
     results = cursor.fetchall()
     return results
 
@@ -61,6 +65,8 @@ def display_results_page(results, page_number, results_per_page):
     end_idx = start_idx + results_per_page
     for result in results[start_idx:end_idx]:
         custom_write(result)
+        if st.button(f"View Profile for {result[1]}"):
+            profile_page(result[1])
 
 def custom_write(result):
     if len(result) >= 6:
@@ -73,7 +79,7 @@ def custom_write(result):
         html_code = f"""
         <style>
             .result-container:hover {{
-                background-color: #3c777b;
+                background-color: #B4D4FF;
                 cursor: pointer;
             }}
         </style>
@@ -94,8 +100,8 @@ def custom_write(result):
 
 #Options Menu
 with st.sidebar:
-    selected = option_menu('HealInsight', ["Home", 'Search', 'Predict','About', 'Behind the Scenes'],
-        icons=['play-btn','search','','info-circle', ''],menu_icon='hospital', default_index=0)
+    selected = option_menu('HealInsight', ["Home", 'Search', 'Predict','Behind the Scenes', 'About'],
+        icons=['play-btn','search','','star', 'info-circle'],menu_icon='hospital', default_index=0)
 
 #Home Page
 if selected == "Home":
@@ -112,17 +118,17 @@ if selected == "Home":
             st.markdown(
                 """
                 <div style="font-size:22px">
-                - <i> Discover and select home health services</i><br>
-                - <i> Predict ratings for home health services</i><br>
-                - <i> Uncover the app's behind-the-scenes</i><br>
-                - <i> Interested in just exploring and learning?</i><br>
+                - <i> Discover and select home health services</i><br><br>
+                - <i> Predict ratings for home health services</i><br><br>
+                - <i> Uncover the app's behind-the-scenes</i><br><br>
+                - <i> Interested in just exploring and learning?</i><br><br>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
-        gif_path = "https://cdn.dribbble.com/users/856306/screenshots/4120104/medical_building_800x600.gif"
+        gif_path = "https://i.pinimg.com/originals/ea/7f/2d/ea7f2dd47969349da148ea0b4ec56815.gif"
         with col2:
-            st.markdown(f'<img src="{gif_path}" alt="gif" width="400">', unsafe_allow_html=True)
+            st.markdown(f'<img src="{gif_path}" alt="gif" width="500">', unsafe_allow_html=True)
     st.divider()
 
     st.header('Tutorial Video')
@@ -177,7 +183,7 @@ if selected == 'Search':
 
 
 if selected == 'Predict':
-    st.markdown("Predict")
+    main_page()
 
 
 if selected == 'Behind the Scenes':
