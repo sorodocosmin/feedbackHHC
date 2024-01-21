@@ -1,14 +1,47 @@
-Time elapsed for training: 19.15622043609619
-Neural Network Accuracy testing: 0.7678142514011209
+-------------------Without Hyperparameter Tuning--------------------
+Time elapsed for training the data: 4.853201389312744
+Accuracy testing: 0.8283828382838284
+Accuracy training: 0.982948294829483
 
-Neural Network Accuracy train: 0.9994662396583934
+Time elapsed for training the data: 3.321758270263672
+Accuracy testing: 0.8234323432343235
+Accuracy training: 0.9796479647964796
 
-Cross fold validation: 100
-Cross fold validation: 0.7827311522048364
-Time elapsed for cross fold validation: 2411.796178817749
+Time elapsed for training the data: 3.350903034210205
+Accuracy testing: 0.8382838283828383
+Accuracy training: 0.9680968096809681
 
+Time elapsed for training the data: 5.965420961380005
+Accuracy testing: 0.8366336633663366
+Accuracy training: 0.9895489548954896
 
+Time elapsed for training the data: 4.429728031158447
+Accuracy testing: 0.8448844884488449
+Accuracy training: 0.9790979097909791
 
+Time elapsed for training the data: 2.7673747539520264
+Accuracy testing: 0.8399339933993399
+Accuracy training: 0.9554455445544554
+
+Time elapsed for training the data: 5.978512287139893
+Accuracy testing: 0.8382838283828383
+Accuracy training: 0.993949394939494
+
+Time elapsed for training the data: 5.8079423904418945
+Accuracy testing: 0.8118811881188119
+Accuracy training: 0.9922992299229924
+
+Time elapsed for training the data: 3.299044609069824
+Accuracy testing: 0.8514851485148515
+Accuracy training: 0.9697469746974697
+
+Time elapsed for training the data: 3.3257837295532227
+Accuracy testing: 0.8399339933993399
+Accuracy training: 0.9823982398239824
+
+Average accuracy testing: 0.8353135313531354
+Average accuracy training: 0.9793179317931795
+Average time elapsed: 4.309966945648194
 
 --------------------With Hyperparameter Tuning--------------------
 Time elapsed for training the data: 13.857967615127563
@@ -54,3 +87,9 @@ Accuracy training: 0.9048404840484049
 Average accuracy testing: 0.8592409240924093
 Average accuracy training: 0.8981298129812982
 Average time elapsed: 14.307233572006226
+
+
+
+Cross fold validation: 100
+Cross fold validation: 0.8265204678362573
+Time elapsed for cross fold validation: 433.14596819877625
