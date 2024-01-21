@@ -1,16 +1,20 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
-import json
-import database_handler_forUI as db
-from profile_page import profile_page
-from estimate_quality import main_page
 
-#Layout
 st.set_page_config(
     page_title="HealInsight",
     page_icon=":hospital:",
     layout="wide"
 )
+
+from streamlit_option_menu import option_menu
+import json
+import database_handler_forUI as db
+from profile_page import profile_page
+from estimate_quality import main_page
+from behind_the_scenes import behind_the_scenes_page
+
+#Layout
+
 
 st.markdown("""
 <style>
@@ -187,7 +191,7 @@ if selected == 'Predict':
 
 
 if selected == 'Behind the Scenes':
-    st.markdown("Behind the Scenes")
+    behind_the_scenes_page()
 
 
 
