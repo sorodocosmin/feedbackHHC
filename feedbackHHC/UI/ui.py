@@ -8,12 +8,12 @@ import pandas as pd
 import altair as alt
 
 import numpy as np
-#Layout
-# st.set_page_config(
-#     page_title="HealInsight",
-#     page_icon=":hospital:",
-#     layout="wide"
-# )
+
+st.set_page_config(
+    page_title="HealInsight",
+    page_icon=":hospital:",
+    layout="wide"
+)
 
 st.markdown("""
 <style>
@@ -99,7 +99,279 @@ def custom_write(result):
     else:
         st.warning("Invalid result format. Unable to display.")
 
+def create_adaboost_chart():
+        st.markdown("The hyperparameters used for AdaBoostClassifier are the following:")
+        code = '''
+        possible_parameters_ab = {
+                "n_estimators": [10, 25, 50, 100, 200, 250, 500],  # which is the number of iterations
+                # learning rate is mutiplied with the weight of the distribution for each iteration
+                "learning_rate": [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0r],
+                "estimator": [DecisionTreeClassifier(max_depth=1), DecisionTreeClassifier(max_depth=2, criterion="gini"),
+                              DecisionTreeClassifier(max_depth=2, criterion='entropy')]
 
+            }
+        '''
+
+
+        st.code(code, language='python')
+        data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Time(in seconds)": [77.70032358169556, 858.1552698612213]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart1 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+            x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+            color=alt.Color('Algorithms:N', legend=None)
+        ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
+
+        st.altair_chart(chart1, use_container_width=True)
+
+        data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Best Score": [0.5379636937647988, 0.692583935401615]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart2 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+            x=alt.X('Best Score:Q', axis=alt.Axis(title='Best Score')),
+            color=alt.Color('Algorithms:N', legend=None)
+        ).properties(width=500, height=400, title="Best Score for hyperparameters tunning (AdaBoostClassifier)")
+
+        st.altair_chart(chart2, use_container_width=True)
+
+        data = {
+            "Accuracy": ["Before", "After"],
+            "Score": [0.366006600660066, 0.7138613861386138]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart3 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Accuracy:N', axis=alt.Axis(title='Accuracy')),
+            x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
+            color=alt.Color('Accuracy:N', legend=None)
+        ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (AdaBoostClassifier)")
+
+        max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
+        final_chart3 = chart3 + max_line
+        st.altair_chart(final_chart3, use_container_width=True)
+
+        data = {
+            "When": ["Before", "After"],
+            "Time in seconds": [0.358627033233642, 4.953497314453125]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart4 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('When:N', axis=alt.Axis(title='')),
+            x=alt.X('Time in seconds:Q', axis=alt.Axis(title='Time in seconds')),
+            color=alt.Color('When:N', legend=None)
+        ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
+
+        st.altair_chart(chart4, use_container_width=True)
+
+        return chart1, chart2, final_chart3, chart4
+
+def create_comparation_chart():
+        data = {
+            "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuronalNetwork"],
+            "Score": [0.7138613861386138, 0.7608910891089109, 0.6671617161716171,  0.8353135313531354]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart1 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
+            x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
+            color=alt.Color('Models:N', legend=None)
+        ).properties(width=500, height=400, title="Accuracy testing for all models")
+
+        max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
+        final_chart1 = chart1 + max_line
+        st.altair_chart(final_chart1, use_container_width=True)
+
+        data = {
+            "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuronalNetwork"],
+            "Time(in seconds)": [4.953497314453125, 4.612986588478089,  0.017272686958312987, 14.307233572006226]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart2 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
+            x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+            color=alt.Color('Models:N', legend=None)
+        ).properties(width=500, height=400, title="Time took for training all models")
+
+        st.altair_chart(chart2, use_container_width=True)
+
+        data = {
+            "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuronalNetwork"],
+            "Time(in seconds)": [503.62843465805054, 541.2269668579102,  0.5620238780975342, 433.14596819877625]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart3 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
+            x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+            color=alt.Color('Models:N', legend=None)
+        ).properties(width=500, height=400, title="Time for Cross-Validation (Fold=100) for all models")
+
+        st.altair_chart(chart3, use_container_width=True)
+
+        data = {
+            "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuronalNetwork"],
+            "Score": [0.5522222222222222, 0.762263157894737, 0.6579532163742691, 0.8265204678362573]
+        }
+
+        chart_data = pd.DataFrame(data)
+        chart4 = alt.Chart(chart_data).mark_bar().encode(
+            y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
+            x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
+            color=alt.Color('Models:N', legend=None)
+        ).properties(width=500, height=400, title="Accuracy at Cross-Validation (Fold=100) for all models")
+
+        max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
+        final_chart4 = chart4 + max_line
+        st.altair_chart(final_chart4, use_container_width=True)
+
+        return final_chart1, chart2, chart3, final_chart4
+
+def create_randomforest_chart():
+    st.markdown("The hyperparameters used for RandomForestClassifier are the following:")
+    code = '''
+            possible_parameters_rf = {
+            "n_estimators": [10, 100, 200, 500, 750, 1_000],
+            "criterion": ["gini", "entropy"],
+            # the maximum depth of the tree is represented by the nr of features which is 12
+            "max_depth": [None, 5, 7, 8, 9, 10],
+            # Bootstrap means that instead of training on all the observations,
+            # each tree of RF is trained on a subset of the observations
+            "bootstrap": [True, False]
+        }
+        '''
+    st.code(code, language='python')
+    data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Time(in seconds)": [141.7917718887329, 2126.8367805480957]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart1 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (RandomForestClassifier)")
+
+    st.altair_chart(chart1, use_container_width=True)
+
+    data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Best Score": [0.7612925748284864, 0.7673517090644162]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart2 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Best Score:Q', axis=alt.Axis(title='Best Score')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Best Score for hyperparameters tuning (RandomForestClassifier)")
+
+    st.altair_chart(chart2, use_container_width=True)
+
+    data = {
+            "Algorithms": ["After", "Before"],
+            "Accuracy": [0.7608910891089109, 0.7315181518151814]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart3 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Accuracy:Q', axis=alt.Axis(title='Accuracy')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (RandomForestClassifier)")
+
+    st.altair_chart(chart3, use_container_width=True)
+
+    data = {
+            "Algorithms": ["After", "Before"],
+            "Time(in seconds)": [4.612986588478089, 0.7774333000183106]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart4 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Time took on training before and after hyperparameter tuning (RandomForestClassifier)")
+
+    st.altair_chart(chart4, use_container_width=True)
+
+    return chart1, chart2, chart3, chart4
+
+
+def create_neuralnetwork_chart():
+    data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Time(in seconds)": [139.5538055896759, 1297.5675098896027]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart1 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (Neuronal Network)")
+
+    st.altair_chart(chart1, use_container_width=True)
+
+    data = {
+            "Algorithms": ["RandomSearch", "GridSearch"],
+            "Best Score": [0.849826968611499, 0.8614048934490924]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart2 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Best Score:Q', axis=alt.Axis(title='Best Score')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Best Score for hyperparameters tuning (Neuronal Network)")
+
+    st.altair_chart(chart2, use_container_width=True)
+
+    data = {
+            "Algorithms": ["After", "Before"],
+            "Accuracy": [0.8592409240924093, 0.8353135313531354]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart3 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Accuracy:Q', axis=alt.Axis(title='Accuracy')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (Neuronal Network)")
+
+    st.altair_chart(chart3, use_container_width=True)
+
+    data = {
+            "Algorithms": ["After", "Before"],
+            "Time(in seconds)": [14.307233572006226, 4.309966945648194]
+        }
+
+    chart_data = pd.DataFrame(data)
+    chart4 = alt.Chart(chart_data).mark_bar().encode(
+        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
+        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
+        color=alt.Color('Algorithms:N', legend=None)
+    ).properties(width=500, height=400, title="Time took on training before and after hyperparameter tuning (Neuronal Network)")
+
+    st.altair_chart(chart4, use_container_width=True)
+
+    return chart1, chart2, chart3, chart4
+
+def create_collapsible_chart(title, create_chart_function):
+    with st.expander(title):
+        create_chart_function()
 
 #Options Menu
 with st.sidebar:
@@ -185,127 +457,10 @@ if selected == 'Predict':
 
 if selected == 'Behind the Scenes':
 
-    data = {
-        "Algorithms": ["RandomSearch", "GridSearch"],
-        "Time(in seconds)": [77.70032358169556, 858.1552698612213]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
-        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
-        color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
-
-    st.altair_chart(chart, use_container_width=True)
-
-    data = {
-        "Algorithms": ["RandomSearch", "GridSearch"],
-        "Best Score": [0.5379636937647988, 0.692583935401615]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
-        x=alt.X('Best Score:Q', axis=alt.Axis(title='Best Score')),
-        color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Best Score for hyperparameters tunning (AdaBoostClassifier)")
-
-    st.altair_chart(chart, use_container_width=True)
-
-    data = {
-        "Accuracy": ["Before", "After"],
-        "Score": [0.366006600660066, 0.7138613861386138]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Accuracy:N', axis=alt.Axis(title='Accuracy')),
-        x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
-        color=alt.Color('Accuracy:N', legend=None)
-    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (AdaBoostClassifier)")
-
-    max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
-    final_chart = chart + max_line
-    st.altair_chart(final_chart, use_container_width=True)
-
-    data = {
-        "When": ["Before", "After"],
-        "Time in seconds": [0.358627033233642, 4.953497314453125]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('When:N', axis=alt.Axis(title='')),
-        x=alt.X('Time in seconds:Q', axis=alt.Axis(title='Time in seconds')),
-        color=alt.Color('When:N', legend=None)
-    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
-
-    st.altair_chart(chart, use_container_width=True)
-
-    data = {
-        "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuralNetwork"],
-        "Score": [0.7138613861386138, 0.7608910891089109, 0.6671617161716171,  0.8353135313531354]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
-        x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
-        color=alt.Color('Models:N', legend=None)
-    ).properties(width=500, height=400, title="Accuracy testing for all models")
-
-    max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
-    final_chart = chart + max_line
-    st.altair_chart(final_chart, use_container_width=True)
-
-    data = {
-        "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuralNetwork"],
-        "Time(in seconds)": [4.953497314453125, 4.612986588478089,  0.017272686958312987, 14.307233572006226]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
-        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
-        color=alt.Color('Models:N', legend=None)
-    ).properties(width=500, height=400, title="Time took for training all models")
-
-    st.altair_chart(chart, use_container_width=True)
-
-    data = {
-        "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuralNetwork"],
-        "Time(in seconds)": [503.62843465805054, 541.2269668579102,  0.5620238780975342, 433.14596819877625]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
-        x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
-        color=alt.Color('Models:N', legend=None)
-    ).properties(width=500, height=400, title="Time for Cross-Validation (Fold=100) for all models")
-
-    st.altair_chart(chart, use_container_width=True)
-
-    data = {
-        "Models": ["AdaBoost", "RandomForest", "NaiveBayes", "NeuralNetwork"],
-        "Score": [0.5522222222222222, 0.762263157894737, 0.6579532163742691, 0.8265204678362573]
-    }
-
-    chart_data = pd.DataFrame(data)
-    chart = alt.Chart(chart_data).mark_bar().encode(
-        y=alt.Y('Models:N', axis=alt.Axis(title='Models')),
-        x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
-        color=alt.Color('Models:N', legend=None)
-    ).properties(width=500, height=400, title="Accuracy at Cross-Validation (Fold=100) for all models")
-
-    max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
-    final_chart = chart + max_line
-    st.altair_chart(final_chart, use_container_width=True)
-
-
-
-
+    create_collapsible_chart("Chart 1 - RandomForestClassifier", create_randomforest_chart)
+    create_collapsible_chart("Chart 2 - AdaBoostClassifier", create_adaboost_chart)
+    create_collapsible_chart("Chart 3 - NeuronalNetwork", create_neuralnetwork_chart)
+    create_collapsible_chart("Chart 4 - Comparations", create_comparation_chart)
 
 
 
