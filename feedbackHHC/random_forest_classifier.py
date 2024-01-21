@@ -68,15 +68,17 @@ if __name__ == '__main__':
     df = pd.read_csv("Final_data.csv")
     x_train, labels_train, x_test, labels_test = (
         util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
-    start_time = time.time()
-    # best_parameters, best_score = grid_search(possible_parameters_rf, model, x_train, labels_train)
-    # print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
-    # print(f"Time elapsed for grid Search: {time.time() - start_time}")
 
     start_time = time.time()
     best_parameters, best_score = random_search(possible_parameters_rf, model, x_train, labels_train)
     print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
     print(f"Time elapsed for random Search: {time.time() - start_time}")
+
+    start_time = time.time()
+    best_parameters, best_score = grid_search(possible_parameters_rf, model, x_train, labels_train)
+    print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
+    print(f"Time elapsed for grid Search: {time.time() - start_time}")
+
 
 
     # Now, we will train the model using the best parameters obtained from the hyperparameter tunning
@@ -135,7 +137,7 @@ if __name__ == '__main__':
 
     # compute cross fold validation
     # x1_train, labels1_train, x1_test, labels1_test = (
-    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
+    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.20))
     #
     # model_rf = Random_Forest_Classifier(x1_train, labels1_train)
     # model_rf.train()
@@ -144,39 +146,39 @@ if __name__ == '__main__':
     # print(f"Cross fold validation: {len(cross_f_score)}")
     # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
     # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
-
-    df = pd.read_csv("new_preprocess/Datas_After_Preprocessing.csv")
-    # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list
-    # df['Provider Name'] = df['Provider Name'].apply(np.array)  # will transform that string to a list
-    print(df)
-    accuracy_test = []
-    accuracy_train = []
-    time_elapsed = []
-
-    nr_tests = 10
-    for _ in range(nr_tests):
-        x1_train, labels1_train, x1_test, labels1_test = (
-            util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
-        start_time = time.time()
-
-        model_rf = Random_Forest_Classifier(x1_train, labels1_train)
-        model_rf.train()
-        end_time = time.time()
-        time_elapsed.append(end_time - start_time)
-        print(f"Time elapsed for training the data: {end_time - start_time}")
-        predicted_labels_train = model_rf.predict(x1_train)
-        predicted_labels_test = model_rf.predict(x1_test)
-        curr_acc_test = util.get_accuracy(labels1_test, predicted_labels_test)
-        curr_acc_train = util.get_accuracy(labels1_train, predicted_labels_train)
-        print(f"Accuracy testing: {curr_acc_test}")
-        print(f"Accuracy training: {curr_acc_train}")
-        accuracy_test.append(curr_acc_test)
-        accuracy_train.append(curr_acc_train)
-        print()
-
-    print(f"Average accuracy testing: {sum(accuracy_test) / nr_tests}")
-    print(f"Average accuracy training: {sum(accuracy_train) / nr_tests}")
-    print(f"Average time elapsed: {sum(time_elapsed) / nr_tests}")
+    #
+    # df = pd.read_csv("Final_data.csv")
+    # # # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list
+    # # # df['Provider Name'] = df['Provider Name'].apply(np.array)  # will transform that string to a list
+    # # print(df)
+    # accuracy_test = []
+    # accuracy_train = []
+    # time_elapsed = []
+    #
+    # nr_tests = 10
+    # for _ in range(nr_tests):
+    #     x1_train, labels1_train, x1_test, labels1_test = (
+    #         util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
+    #     start_time = time.time()
+    #
+    #     model_rf = Random_Forest_Classifier(x1_train, labels1_train)
+    #     model_rf.train()
+    #     end_time = time.time()
+    #     time_elapsed.append(end_time - start_time)
+    #     print(f"Time elapsed for training the data: {end_time - start_time}")
+    #     predicted_labels_train = model_rf.predict(x1_train)
+    #     predicted_labels_test = model_rf.predict(x1_test)
+    #     curr_acc_test = util.get_accuracy(labels1_test, predicted_labels_test)
+    #     curr_acc_train = util.get_accuracy(labels1_train, predicted_labels_train)
+    #     print(f"Accuracy testing: {curr_acc_test}")
+    #     print(f"Accuracy training: {curr_acc_train}")
+    #     accuracy_test.append(curr_acc_test)
+    #     accuracy_train.append(curr_acc_train)
+    #     print()
+    #
+    # print(f"Average accuracy testing: {sum(accuracy_test) / nr_tests}")
+    # print(f"Average accuracy training: {sum(accuracy_train) / nr_tests}")
+    # print(f"Average time elapsed: {sum(time_elapsed) / nr_tests}")
 
 
 

@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import json
 import database_handler_forUI as db
-import psycopg2
 from profile_page import profile_page
 from estimate_quality import main_page
 
@@ -38,7 +37,7 @@ def search(keyword):
 
     keyword_lower = keyword.lower()
 
-    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating FROM homecare WHERE LOWER(address) LIKE '%{keyword_lower}%' OR LOWER(zip_code) LIKE '%{keyword_lower}%' OR LOWER(city_town) LIKE '%{keyword_lower}%' OR LOWER(state) LIKE '%{keyword_lower}%'")
+    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating, cms_certification_number FROM homecare WHERE LOWER(address) LIKE '%{keyword_lower}%' OR LOWER(zip_code) LIKE '%{keyword_lower}%' OR LOWER(city_town) LIKE '%{keyword_lower}%' OR LOWER(state) LIKE '%{keyword_lower}%'")
     results = cursor.fetchall()
     return results
 
@@ -55,7 +54,7 @@ def search_by_provider_name(keyword):
 
     keyword_lower = keyword.lower()
 
-    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating FROM homecare WHERE LOWER(provider_name) LIKE '%{keyword_lower}%'")
+    cursor.execute(f"SELECT state, provider_name, address, city_town, type_of_ownership, quality_of_patient_care_star_rating, cms_certification_number FROM homecare WHERE LOWER(provider_name) LIKE '%{keyword_lower}%'")
     results = cursor.fetchall()
     return results
 
@@ -64,12 +63,13 @@ def display_results_page(results, page_number, results_per_page):
     start_idx = (page_number - 1) * results_per_page
     end_idx = start_idx + results_per_page
     for result in results[start_idx:end_idx]:
+        key = f"view_profile_{result[6]}"
         custom_write(result)
-        if st.button(f"View Profile for {result[1]}"):
-            profile_page(result[1])
+        if st.button(f"View Profile for {result[1]}", key=key):
+            profile_page(result[6])
 
 def custom_write(result):
-    if len(result) >= 6:
+    if len(result) >= 7:
         quality_rating = result[5]
         if quality_rating is not None:
             quality_rating_stars = '⭐' * int(quality_rating)

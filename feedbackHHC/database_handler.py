@@ -136,7 +136,7 @@ class DatabaseHandler:
     def insert_data(connection):
         cursor = connection.cursor()
     
-        with open('C:\\Users\\Andrei\\OneDrive\\Desktop\\AI\\Project\\feedbackHHC\\feedbackHHC\\HH_Provider_Oct2023.csv', 'r') as file:
+        with open('HH_Provider_Oct2023.csv', 'r') as file:
             reader = csv.reader(file)
             next(reader) 
             
@@ -154,7 +154,6 @@ class DatabaseHandler:
                 
             connection.commit()
             cursor.close()
-
 
 
 if __name__ == "__main__":

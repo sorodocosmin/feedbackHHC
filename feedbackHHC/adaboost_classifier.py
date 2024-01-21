@@ -19,7 +19,8 @@ class AdaBoost_Classifier:
         :param x_train: the training data
         :param y_train: the training labels
         """
-        self.__model = AdaBoostClassifier()
+        self.__model = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2, criterion='gini'), n_estimators=500,
+                                          learning_rate=2.0)
         self.__x_train = x_train
         self.__y_train = y_train
 
@@ -113,7 +114,7 @@ if __name__ == '__main__':
     # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
     # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
 
-    df = pd.read_csv("Final_data.csv")
+    df = pd.read_csv("Final_1_data.csv")
     # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list
     # df['Provider Name'] = df['Provider Name'].apply(np.array)  # will transform that string to a list
 

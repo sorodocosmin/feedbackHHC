@@ -23,10 +23,12 @@ class Feature_selection:
         corr_with_target = corr_matrix["Quality of patient care star rating"]
 
         # threshold
-        threshold = 0.4
+        threshold = 0.2
 
         # select features with abs(corr) >= threshold
         relevant_features = corr_with_target[abs(corr_with_target) >= threshold]
+        print(f"Relevant features : {relevant_features}")
+
         relevant_features = relevant_features.drop("Quality of patient care star rating")
 
         # print(len(relevant_features))

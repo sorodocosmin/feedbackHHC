@@ -1,6 +1,4 @@
 import psycopg2
-import csv
-from psycopg2 import sql
 
 class Config:
     DATABASE_NAME = 'HomeCare'

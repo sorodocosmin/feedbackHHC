@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
 
-def split_train_and_test_data(df, name_output_column, test_size=0.2):
+def give_all_datas(df, name_output_column):
     """
     Split the data into training and testing data
     :param df: a pandas dataframe
@@ -21,7 +21,6 @@ def split_train_and_test_data(df, name_output_column, test_size=0.2):
     # ex : 0.5 -> 0, 1.0 -> 1, 1.5-> 2, 2.0 -> 3, 2.5 -> 4, 3.0 -> 5, 3.245 ->6, ..etc
     # scaler = StandardScaler()
     # datas_without_output = scaler.fit_transform(datas_without_output)
-    x_train, x_test, y_train, y_test = train_test_split(datas_without_output, output.values, test_size=test_size)
 
     dict_class_original_value = {}
 
@@ -33,9 +32,7 @@ def split_train_and_test_data(df, name_output_column, test_size=0.2):
 
     # print("Dict: ", dict_class_original_value)
 
-
-
-    return x_train, y_train, x_test, y_test, dict_class_original_value
+    return datas_without_output, output, dict_class_original_value
 
 
 def get_classes(list_labels):

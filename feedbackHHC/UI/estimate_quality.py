@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 
 import sys
-sys.path.append('C:\\Users\\Andrei\\OneDrive\\Desktop\\AI\\Project\\feedbackHHC\\feedbackHHC')
+
+sys.path.append('../')
 
 import ui_util
 import adaboost_classifier as ab
@@ -15,9 +16,9 @@ import random_forest_classifier as rf
 def initialize_classifiers():
     print("Initialize classifiers")
 
-    df = pd.read_csv('C:\\Users\\Andrei\\OneDrive\\Desktop\\AI\\Project\\feedbackHHC\\feedbackHHC\\Final_data.csv')
-    x_train, labels_train, x_test, labels_test, dict_classes_original = (
-        ui_util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
+    df = pd.read_csv('../Final_data.csv')
+    x_train, labels_train, dict_classes_original = (
+        ui_util.give_all_datas(df, 'Quality of patient care star rating'))
 
     m_ab = ab.AdaBoost_Classifier(x_train, labels_train)
     m_ab.train()
@@ -40,7 +41,7 @@ def get_column_names():
     Get the column names from Final_data.csv, except the column 'Quality of patient care star rating'
     :return: list of column names
     """
-    df = pd.read_csv('C:\\Users\\Andrei\\OneDrive\\Desktop\\AI\\Project\\feedbackHHC\\feedbackHHC\\Final_data.csv')
+    df = pd.read_csv('../Final_data.csv')
     df = df.drop(['Quality of patient care star rating'], axis=1)
     return list(df.columns)
 
@@ -172,7 +173,7 @@ def get_opacities(quality):
             colors.append("gold")
         else:
             r = quality - i
-            if r < 0:
+            if r <= -1:
                 r = 0.5
                 colors.append("grey")
             else:
