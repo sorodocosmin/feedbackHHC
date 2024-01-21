@@ -1,0 +1,134 @@
++ Remove rows weithout Rating from 11_000 to 7852
+
+Processing column 'Certification Date'
+Shape before: (7852, 57)
+Shape after: (7852, 57)
+Processing column 'How often the home health team began their patients' care in a timely manner'
+Shape before: (7852, 57)
+Shape after: (7070, 57)
+Processing column 'How often the home health team determined whether patients received a flu shot for the current flu season'
+Shape before: (7070, 57)
+Shape after: (6780, 57)
+Processing column 'How often patients got better at walking or moving around'
+Shape before: (6780, 57)
+Shape after: (6403, 57)
+Processing column 'How often patients got better at getting in and out of bed'
+Shape before: (6403, 57)
+Shape after: (6050, 57)
+Processing column 'How often patients got better at bathing'
+Shape before: (6050, 57)
+Shape after: (5904, 57)
+Processing column 'How often patients' breathing improved'
+Shape before: (5904, 57)
+Shape after: (5640, 57)
+Processing column 'How often patients got better at taking their drugs correctly by mouth'
+Shape before: (5640, 57)
+Shape after: (5507, 57)
+Processing column 'How often home health patients had to be admitted to the hospital'
+Shape before: (5507, 57)
+Shape after: (5328, 57)
+Processing column 'How often patients receiving home health care needed urgent, unplanned care in the ER without being admitted'
+Shape before: (5328, 57)
+Shape after: (5203, 57)
+Processing column 'Changes in skin integrity post-acute care: pressure ulcer/injury'
+Shape before: (5203, 57)
+Shape after: (4980, 57)
+Processing column 'How often physician-recommended actions to address medication issues were completely timely'
+Shape before: (4980, 57)
+Shape after: (4477, 57)
+Processing column 'Percent of Residents Experiencing One or More Falls with Major Injury'
+Shape before: (4477, 57)
+Shape after: (4314, 57)
+Processing column 'Application of Percent of Long Term Care Hospital Patients with an Admission and Discharge Functional Assessment and a Care Plan that Addresses Function'
+Shape before: (4314, 57)
+Shape after: (3854, 57)
+Processing column 'DTC Numerator'
+Shape before: (3854, 57)
+Shape after: (3515, 57)
+Processing column 'DTC Denominator'
+Shape before: (3515, 57)
+Shape after: (3389, 57)
+Processing column 'DTC Observed Rate'
+Shape before: (3389, 57)
+Shape after: (3260, 57)
+Processing column 'DTC Risk-Standardized Rate'
+Shape before: (3260, 57)
+Shape after: (3200, 57)
+Processing column 'DTC Risk-Standardized Rate (Lower Limit)'
+Shape before: (3200, 57)
+Shape after: (3158, 57)
+Processing column 'DTC Risk-Standardized Rate (Upper Limit)'
+Shape before: (3158, 57)
+Shape after: (3128, 57)
+Processing column 'PPR Numerator'
+Shape before: (3128, 57)
+Shape after: (2997, 57)
+Processing column 'PPR Denominator'
+Shape before: (2997, 57)
+Shape after: (2936, 57)
+Processing column 'PPR Observed Rate'
+Shape before: (2936, 57)
+Shape after: (2840, 57)
+Processing column 'PPR Risk-Standardized Rate'
+Shape before: (2840, 57)
+Shape after: (2786, 57)
+Processing column 'PPR Risk-Standardized Rate (Lower Limit)'
+Shape before: (2786, 57)
+Shape after: (2748, 57)
+Processing column 'PPR Risk-Standardized Rate (Upper Limit)'
+Shape before: (2748, 57)
+Shape after: (2739, 57)
+Processing column 'PPH Numerator'
+Shape before: (2739, 57)
+Shape after: (2632, 57)
+Processing column 'PPH Denominator'
+Shape before: (2632, 57)
+Shape after: (2591, 57)
+Processing column 'PPH Observed Rate'
+Shape before: (2591, 57)
+Shape after: (2570, 57)
+Processing column 'PPH Risk-Standardized Rate'
+Shape before: (2570, 57)
+Shape after: (2539, 57)
+Processing column 'PPH Risk-Standardized Rate (Lower Limit)'
+Shape before: (2539, 57)
+Shape after: (2530, 57)
+Processing column 'PPH Risk-Standardized Rate (Upper Limit)'
+Shape before: (2530, 57)
+Shape after: (2519, 57)
+Processing column 'How much Medicare spends on an episode of care at this agency, compared to Medicare spending across all agencies nationally'
+Shape before: (2519, 57)
+Shape after: (2485, 57)
+Processing column 'No. of episodes to calc how much Medicare spends per episode of care at agency, compared to spending at all agencies (national)'
+Shape before: (2485, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_1'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_2'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_3'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_4'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_5'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_6'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_7'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_8'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_9'
+Shape before: (2424, 57)
+Shape after: (2424, 57)
+Processing column 'Provider_Name_10'
+Shape before: (2424, 57)
+Shape after: (2424, 57)

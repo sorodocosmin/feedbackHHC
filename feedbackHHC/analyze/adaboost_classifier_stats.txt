@@ -115,3 +115,129 @@ Cross fold validation: 0.7531365576102418
 Time elapsed for cross fold validation: 67.16618204116821
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------PREPROCESS NEW ----------------------------------------------------------------
+After Hyperparameters tunning
+Time elapsed for training the data: 3.462148427963257
+Accuracy testing: 0.5165016501650165
+Accuracy training: 0.5764576457645765
+
+Time elapsed for training the data: 3.316950798034668
+Accuracy testing: 0.6072607260726073
+Accuracy training: 0.5814081408140814
+
+Time elapsed for training the data: 4.4546263217926025
+Accuracy testing: 0.5544554455445545
+Accuracy training: 0.5539053905390539
+
+Time elapsed for training the data: 5.1769020557403564
+Accuracy testing: 0.594059405940594
+Accuracy training: 0.6133113311331133
+
+Time elapsed for training the data: 4.270158767700195
+Accuracy testing: 0.5346534653465347
+Accuracy training: 0.5896589658965896
+
+Time elapsed for training the data: 4.3152854442596436
+Accuracy testing: 0.49834983498349833
+Accuracy training: 0.5209020902090209
+
+Time elapsed for training the data: 4.716725587844849
+Accuracy testing: 0.5313531353135313
+Accuracy training: 0.581958195819582
+
+Time elapsed for training the data: 3.157733917236328
+Accuracy testing: 0.5462046204620462
+Accuracy training: 0.5715071507150715
+
+Time elapsed for training the data: 3.610219717025757
+Accuracy testing: 0.5478547854785478
+Accuracy training: 0.5544554455445545
+
+Time elapsed for training the data: 3.29353404045105
+Accuracy testing: 0.5478547854785478
+Accuracy training: 0.5462046204620462
+
+Average accuracy testing: 0.5478547854785479
+Average accuracy training: 0.5689768976897691
+Average time elapsed: 3.977428507804871
+
+
+
+Before Hyperparameters Tunning :
+Time elapsed for training the data: 0.42824792861938477
+Accuracy testing: 0.3943894389438944
+Accuracy training: 0.38283828382838286
+
+Time elapsed for training the data: 0.22095847129821777
+Accuracy testing: 0.3778877887788779
+Accuracy training: 0.37843784378437845
+
+Time elapsed for training the data: 0.19985580444335938
+Accuracy testing: 0.3547854785478548
+Accuracy training: 0.37403740374037403
+
+Time elapsed for training the data: 0.1992785930633545
+Accuracy testing: 0.35973597359735976
+Accuracy training: 0.36468646864686466
+
+Time elapsed for training the data: 0.24955511093139648
+Accuracy testing: 0.3432343234323432
+Accuracy training: 0.34983498349834985
+
+Time elapsed for training the data: 0.23457741737365723
+Accuracy testing: 0.334983498349835
+Accuracy training: 0.3542354235423542
+
+Time elapsed for training the data: 0.21283555030822754
+Accuracy testing: 0.35148514851485146
+Accuracy training: 0.3690869086908691
+
+Time elapsed for training the data: 0.30692195892333984
+Accuracy testing: 0.3564356435643564
+Accuracy training: 0.36303630363036304
+
+Time elapsed for training the data: 0.22465085983276367
+Accuracy testing: 0.4372937293729373
+Accuracy training: 0.4636963696369637
+
+Time elapsed for training the data: 0.20703816413879395
+Accuracy testing: 0.3481848184818482
+Accuracy training: 0.367986798679868
+
+Average accuracy testing: 0.36584158415841583
+Average accuracy training: 0.37678767876787683
+Average time elapsed: 0.2483919858932495
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,6 @@
 import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
 
 
 class Feature_selection:
@@ -13,15 +15,15 @@ class Feature_selection:
         """
         corr_matrix = self.df.corr()
 
-        # plt.figure(figsize=(40, 40))
-        # sns.heatmap(cor, annot=True)
-        # plt.show()
+        plt.figure(figsize=(60, 60))
+        sns.heatmap(corr_matrix, annot=True)
+        plt.show()
 
         # Correlation with output variable
         corr_with_target = corr_matrix["Quality of patient care star rating"]
 
         # threshold
-        threshold = 0.1
+        threshold = 0.4
 
         # select features with abs(corr) >= threshold
         relevant_features = corr_with_target[abs(corr_with_target) >= threshold]
@@ -32,7 +34,7 @@ class Feature_selection:
         # correlation matrix for relevant features
         corr_matrix_relevant_features = self.df[relevant_features.index].corr()
 
-        threshold_dependent_features = 0.65
+        threshold_dependent_features = 0.8
 
         # delete the features that are dependent: have a correlation coefficient >= threshold
         # create a list of columns to drop
@@ -52,6 +54,10 @@ class Feature_selection:
         independent_features = independent_features.append(pd.Index(["Quality of patient care star rating"]))
 
         # save the new dataset to a csv file
-        self.df[independent_features].to_csv("Final_data.csv", index=False)
+        self.df[independent_features].to_csv("Final_1_data.csv", index=False)
 
 
+if __name__ == '__main__':
+    df = pd.read_csv("new_preprocess/Datas_After_Preprocessing.csv")
+    feature_selection = Feature_selection(df)
+    feature_selection.apply_feature_selection()
