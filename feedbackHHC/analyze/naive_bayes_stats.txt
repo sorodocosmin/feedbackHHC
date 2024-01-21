@@ -1,5 +1,48 @@
-Time elapsed for training: 0.0022590160369873047 seconds
-Accuracy testing Bayes Naive: 0.6877502001601281
-Accuracy training Bayes Naive: 0.7227115025353616
-Cross-Validation Scores: 0.7126813655761023
-Time elapsed for Cross-Validation : 0.43640947341918945 seconds
+Time elapsed for training the data: 0.012824058532714844
+Accuracy testing: 0.6947194719471947
+Accuracy training: 0.682068206820682
+
+Time elapsed for training the data: 0.015299320220947266
+Accuracy testing: 0.6320132013201321
+Accuracy training: 0.6985698569856986
+
+Time elapsed for training the data: 0.010861396789550781
+Accuracy testing: 0.6815181518151815
+Accuracy training: 0.6749174917491749
+
+Time elapsed for training the data: 0.010416507720947266
+Accuracy testing: 0.6914191419141914
+Accuracy training: 0.6908690869086909
+
+Time elapsed for training the data: 0.008183002471923828
+Accuracy testing: 0.641914191419142
+Accuracy training: 0.6897689768976898
+
+Time elapsed for training the data: 0.018158912658691406
+Accuracy testing: 0.6963696369636964
+Accuracy training: 0.6804180418041804
+
+Time elapsed for training the data: 0.022237539291381836
+Accuracy testing: 0.6402640264026402
+Accuracy training: 0.6694169416941694
+
+Time elapsed for training the data: 0.02474212646484375
+Accuracy testing: 0.6815181518151815
+Accuracy training: 0.6776677667766776
+
+Time elapsed for training the data: 0.024738788604736328
+Accuracy testing: 0.6716171617161716
+Accuracy training: 0.6864686468646864
+
+Time elapsed for training the data: 0.025265216827392578
+Accuracy testing: 0.6402640264026402
+Accuracy training: 0.6952695269526953
+
+Average accuracy testing: 0.6671617161716171
+Average accuracy training: 0.6845434543454345
+Average time elapsed: 0.017272686958312987
+
+----------------------------------------------------
+
+Cross-Validation Scores: 0.6579532163742691
+Time elapsed for Cross-Validation : 0.5620238780975342 seconds

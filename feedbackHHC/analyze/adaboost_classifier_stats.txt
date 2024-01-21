@@ -223,6 +223,114 @@ Average time elapsed: 0.2483919858932495
 
 
 
+---- Gabi ---------------------------------------------
+
+-> without hyperparameter tuning
+Time elapsed for training the data: 0.2623581886291504
+Accuracy testing: 0.30363036303630364
+Accuracy training: 0.2662266226622662
+
+Time elapsed for training the data: 0.32001352310180664
+Accuracy testing: 0.3250825082508251
+Accuracy training: 0.3586358635863586
+
+Time elapsed for training the data: 0.5922660827636719
+Accuracy testing: 0.4389438943894389
+Accuracy training: 0.411991199119912
+
+Time elapsed for training the data: 0.40410494804382324
+Accuracy testing: 0.36468646864686466
+Accuracy training: 0.3641364136413641
+
+Time elapsed for training the data: 0.352855920791626
+Accuracy testing: 0.39603960396039606
+Accuracy training: 0.41144114411441146
+
+Time elapsed for training the data: 0.3106987476348877
+Accuracy testing: 0.3943894389438944
+Accuracy training: 0.41034103410341033
+
+Time elapsed for training the data: 0.3274405002593994
+Accuracy testing: 0.3432343234323432
+Accuracy training: 0.37073707370737075
+
+Time elapsed for training the data: 0.3132808208465576
+Accuracy testing: 0.3613861386138614
+Accuracy training: 0.411991199119912
+
+Time elapsed for training the data: 0.37708115577697754
+Accuracy testing: 0.35148514851485146
+Accuracy training: 0.38008800880088006
+
+Time elapsed for training the data: 0.3261704444885254
+Accuracy testing: 0.3811881188118812
+Accuracy training: 0.378987898789879
+
+Average accuracy testing: 0.366006600660066
+Average accuracy training: 0.37645764576457647
+Average time elapsed: 0.3586270332336426
+
+
+-> with hyperparameter tuning
+Time elapsed for training the data: 4.707899570465088
+Accuracy testing: 0.7244224422442245
+Accuracy training: 0.7964796479647965
+
+Time elapsed for training the data: 5.118370056152344
+Accuracy testing: 0.7524752475247525
+Accuracy training: 0.7783278327832783
+
+Time elapsed for training the data: 5.037566661834717
+Accuracy testing: 0.7062706270627063
+Accuracy training: 0.7942794279427943
+
+Time elapsed for training the data: 4.542219400405884
+Accuracy testing: 0.7673267326732673
+Accuracy training: 0.768976897689769
+
+Time elapsed for training the data: 4.624580383300781
+Accuracy testing: 0.735973597359736
+Accuracy training: 0.7546754675467546
+
+Time elapsed for training the data: 4.960789442062378
+Accuracy testing: 0.4884488448844885
+Accuracy training: 0.5247524752475248
+
+Time elapsed for training the data: 5.385887861251831
+Accuracy testing: 0.7376237623762376
+Accuracy training: 0.7486248624862486
+
+Time elapsed for training the data: 5.692657470703125
+Accuracy testing: 0.7739273927392739
+Accuracy training: 0.7843784378437844
+
+Time elapsed for training the data: 4.873490333557129
+Accuracy testing: 0.7458745874587459
+Accuracy training: 0.7959295929592959
+
+Time elapsed for training the data: 4.591511964797974
+Accuracy testing: 0.7062706270627063
+Accuracy training: 0.7728272827282728
+
+Average accuracy testing: 0.7138613861386138
+Average accuracy training: 0.751925192519252
+Average time elapsed: 4.953497314453125
+
+-> cross validation with hyperparameter tuning
+Cross fold validation: 100
+Cross fold validation: 0.5522222222222222
+Time elapsed for cross fold validation: 503.62843465805054
+
+----
+
+Fitting 10 folds for each of 147 candidates, totalling 1470 fits
+Best parameters: {'estimator': DecisionTreeClassifier(criterion='entropy', max_depth=2), 'learning_rate': 1.0, 'n_estimators': 500} ; Best score: 0.692583935401615
+Time elapsed for grid Search: 858.1552698612213
+
+Fitting 10 folds for each of 10 candidates, totalling 100 fits
+Best parameters: {'n_estimators': 200, 'learning_rate': 0.5, 'estimator': DecisionTreeClassifier(criterion='entropy', max_depth=2)} ; Best score: 0.5379636937647988
+Time elapsed for random Search: 77.70032358169556
+
 
 
 
