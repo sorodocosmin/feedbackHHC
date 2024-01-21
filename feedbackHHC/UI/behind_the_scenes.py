@@ -220,6 +220,8 @@ def preprocessing_part():
         st.write("How much Medicare spends on an episode of care at this agency, compared to Medicare spending across all agencies nationally ⟶ Col 32")
         st.write("No. of episodes to calc how much Medicare spends per episode of care at agency, compared to spending at all agencies (national) ⟶ Col 33")
 
+    st.image("plot_outlier.png", width=700)
+
     st.subheader("Handling Missing Values")
     st.write("""
     
