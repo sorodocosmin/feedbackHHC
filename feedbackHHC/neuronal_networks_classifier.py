@@ -25,7 +25,7 @@ class NeuralNetworkClassifier:
 
 
 if __name__ == "__main__":
-    # df = pd.read_csv("Final_data.csv", dtype='float')
+    # df = pd.read_csv("Final_data.csv")
     # x_train, labels_train, x_test, labels_test \
     #     = util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25)
     # scaler = StandardScaler()

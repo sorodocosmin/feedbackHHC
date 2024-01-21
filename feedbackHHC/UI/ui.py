@@ -317,6 +317,18 @@ def create_randomforest_chart():
 
 
 def create_neuralnetwork_chart():
+    st.markdown("The hyperparameters used for Neural Network are the following:")
+    code = '''
+    possible_parameters_nn = {
+        'max_iter' : [1_000, 1_500, 2_000],
+        'activation' : ['relu', 'tanh', 'logistic'],
+        'alpha' : [0.0001, 0.1, 0.05, 0.001],
+        'hidden_layer_sizes' : [(100, 100),(50,50), (60,75)]
+    }
+    '''
+
+    st.code(code, language='python')
+
     data = {
             "Algorithms": ["RandomSearch", "GridSearch"],
             "Time(in seconds)": [139.5538055896759, 1297.5675098896027]
@@ -412,10 +424,6 @@ if selected == "Home":
             st.markdown(f'<img src="{gif_path}" alt="gif" width="500">', unsafe_allow_html=True)
     st.divider()
 
-    st.header('Tutorial Video')
-    # video_file = open('Similo_Tutorial3_compressed.mp4', 'rb')
-    # video_bytes = video_file.read()
-    # st.video(video_bytes)
     
 #Search Page
 if selected == 'Search':

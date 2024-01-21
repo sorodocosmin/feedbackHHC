@@ -3,6 +3,9 @@ import pandas as pd
 
 def behind_the_scenes_page():
     # Page title
+
+
+
     st.title("Project Report: Enhancing Patient Care Quality Prediction in Home Health Agencies")
 
     # Table of Contents
@@ -321,14 +324,6 @@ def machine_learning_models_part():
     While not as exhaustive as Grid Search, Random Search often requires fewer evaluations and can be more
     efficient in finding good hyperparameter values.
     """)
-
-    st.subheader("Metrics Selection")
-    st.write("- Precision, recall, F1-score, and AUC-ROC prioritized.")
-    st.subheader("Cross-Validation")
-    st.write("- Employed k-fold cross-validation for robust model performance.")
-    st.subheader("Results and Comparative Analysis")
-    st.write("- Comprehensive assessment of each model's performance.")
-    st.write("- Detailed analysis of precision, recall, ROC curves, and confusion matrices.")
     
 
 

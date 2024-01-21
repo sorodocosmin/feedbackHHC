@@ -9,7 +9,7 @@ from urllib.parse import urlparse, parse_qs
 query_params = st.experimental_get_query_params()
 selected_profile = query_params.get("selected_profile", [None])[0]
 
-def get_provider_data(provider_name):
+def get_provider_data(cms_certification_number):
     conn = psycopg2.connect(
         host="localhost",
         port="5432",
@@ -19,7 +19,7 @@ def get_provider_data(provider_name):
     )
     cursor = conn.cursor()
 
-    query = f"SELECT * FROM homecare WHERE provider_name = '{provider_name}' LIMIT 1"
+    query = f"SELECT * FROM homecare WHERE cms_certification_number = '{cms_certification_number}' LIMIT 1"
     cursor.execute(query)
     provider_data = cursor.fetchone()
     conn.close()
@@ -148,8 +148,6 @@ def profile_page(selected_profile):
 
         st.markdown("## Payment and Value of Care")
         st.table(table_data)
-
-
 
     else:
         st.warning(f"No information found for provider: {provider_name}")
