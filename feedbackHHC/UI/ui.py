@@ -1,4 +1,11 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="HealInsight",
+    page_icon=":hospital:",
+    layout="wide"
+)
+
 from streamlit_option_menu import option_menu
 import json
 import database_handler_forUI as db
@@ -6,14 +13,13 @@ from profile_page import profile_page
 from estimate_quality import main_page
 import pandas as pd
 import altair as alt
-
 import numpy as np
 
-st.set_page_config(
-    page_title="HealInsight",
-    page_icon=":hospital:",
-    layout="wide"
-)
+from behind_the_scenes import behind_the_scenes_page
+
+#Layout
+
+ 
 
 st.markdown("""
 <style>
@@ -457,12 +463,11 @@ if selected == 'Predict':
 
 if selected == 'Behind the Scenes':
 
+    behind_the_scenes_page()
     create_collapsible_chart("Chart 1 - RandomForestClassifier", create_randomforest_chart)
     create_collapsible_chart("Chart 2 - AdaBoostClassifier", create_adaboost_chart)
     create_collapsible_chart("Chart 3 - NeuronalNetwork", create_neuralnetwork_chart)
     create_collapsible_chart("Chart 4 - Comparations", create_comparation_chart)
-
-
 
 if selected == 'About':
     st.title('About the Project')
