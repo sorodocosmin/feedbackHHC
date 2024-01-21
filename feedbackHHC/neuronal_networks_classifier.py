@@ -10,9 +10,14 @@ import time
 
 class NeuralNetworkClassifier:
     def __init__(self, x_train, y_train):
-        self.__model = MLPClassifier()
+        self.__model = MLPClassifier(activation='logistic', alpha=0.001, hidden_layer_sizes=(50,50), max_iter=1500, solver='adam')
+        self.__scaler = StandardScaler()
+        x_train = self.__scaler.fit_transform(x_train)
         self.__x_train = x_train
         self.__y_train = y_train
+
+    def get_scaler(self):
+        return self.__scaler
 
     def train(self):
         self.__model.fit(self.__x_train, self.__y_train)

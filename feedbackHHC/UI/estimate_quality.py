@@ -52,6 +52,12 @@ df_col_names = get_column_names()
 
 # # Function to estimate quality using a pre-implemented classification algorithm
 def estimate_quality(data, classifier):
+    #if classifier is neural network
+    if classifier == model_nn:
+        scaler = classifier.get_scaler()
+        data = scaler.transform(data)
+        print("Am intart")
+        print(data)
     prediction = classifier.predict(data)
     print("Prediction: ", prediction)
     return prediction
