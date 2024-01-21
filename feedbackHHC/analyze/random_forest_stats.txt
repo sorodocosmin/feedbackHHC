@@ -26,109 +26,127 @@ between the best scores, it is very good.
 
 Now we run the algorithm of 10 different random splits of the data into training and test sets, (25% for the test), using the
 default parameters for the random forest classifier, and here are the results:
-Time elapsed for training the data: 0.7668266296386719
-Accuracy testing: 0.8062449959967974
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7319371700286865
-Accuracy testing: 0.7814251401120896
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7144777774810791
-Accuracy testing: 0.7966373098478783
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 0.7774944305419922
-Accuracy testing: 0.8030424339471577
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 0.7237594127655029
-Accuracy testing: 0.8062449959967974
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7021384239196777
-Accuracy testing: 0.8062449959967974
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7261097431182861
-Accuracy testing: 0.8206565252201762
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7085082530975342
-Accuracy testing: 0.7814251401120896
-Accuracy training: 1.0
-
-Time elapsed for training the data: 0.7056319713592529
-Accuracy testing: 0.7910328262610088
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 0.7310352325439453
-Accuracy testing: 0.8086469175340272
-Accuracy training: 0.9994662396583934
-
-Average accuracy testing: 0.800160128102482
-Average accuracy training: 0.999679743795036
-Average time elapsed: 0.7287919044494628
-
-Now, we will try to use the best parameters that we got from the GridSearch, and see if we can get better results:
-Time elapsed for training the data: 9.030748128890991
-Accuracy testing: 0.8190552441953562
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 9.191967487335205
-Accuracy testing: 0.8214571657325861
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 10.24408745765686
-Accuracy testing: 0.7982385908726981
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 10.508450746536255
-Accuracy testing: 0.8190552441953562
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 10.389696598052979
-Accuracy testing: 0.8102481985588471
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 15.116722106933594
-Accuracy testing: 0.8254603682946358
-Accuracy training: 0.9994662396583934
-
-Time elapsed for training the data: 13.557149648666382
-Accuracy testing: 0.8094475580464372
-Accuracy training: 1.0
-
-Time elapsed for training the data: 11.55257797241211
-Accuracy testing: 0.8046437149719776
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 11.245923042297363
-Accuracy testing: 0.8014411529223379
-Accuracy training: 0.9997331198291967
-
-Time elapsed for training the data: 12.130078792572021
-Accuracy testing: 0.8094475580464372
-Accuracy training: 0.9994662396583934
-
-Average accuracy testing: 0.8118494795836669
-Average accuracy training: 0.999599679743795
-Average time elapsed: 11.296740198135376
 
 
 
 
 ------------------------------------------------------------------------------------------------------------------------
 In cele ce urmeaza, se va folosi Random Forest Classifier cu parametrii default
-Cross Fold Validation - Fold = 100
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Hyperparameters tunning
+
+Fitting 10 folds for each of 10 candidates, totalling 100 fits
+C:\Users\sorod\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\model_selection\_split.py:737: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=10.
+  warnings.warn(
+Best parameters: {'n_estimators': 500, 'max_depth': None, 'criterion': 'gini', 'bootstrap': True} ; Best score: 0.7612925748284864
+Time elapsed for random Search: 141.7917718887329
+Fitting 10 folds for each of 144 candidates, totalling 1440 fits
+C:\Users\sorod\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\model_selection\_split.py:737: UserWarning: The least populated class in y has only 2 members, which is less than n_splits=10.
+  warnings.warn(
+Best parameters: {'bootstrap': True, 'criterion': 'gini', 'max_depth': None, 'n_estimators': 500} ; Best score: 0.7673517090644162
+Time elapsed for grid Search: 2126.8367805480957
+
+
+
+Without Hyperparameters :
+Time elapsed for training the data: 0.7823429107666016
+Accuracy testing: 0.740924092409241
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 0.8890128135681152
+Accuracy testing: 0.7376237623762376
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 0.7317807674407959
+Accuracy testing: 0.731023102310231
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 0.7592592239379883
+Accuracy testing: 0.731023102310231
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 0.8641629219055176
+Accuracy testing: 0.7508250825082509
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 0.7537415027618408
+Accuracy testing: 0.7128712871287128
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 0.7391681671142578
+Accuracy testing: 0.698019801980198
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 0.780968427658081
+Accuracy testing: 0.7425742574257426
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 0.7389662265777588
+Accuracy testing: 0.740924092409241
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 0.7349300384521484
+Accuracy testing: 0.7293729372937293
+Accuracy training: 0.9994499449944995
+
+Average accuracy testing: 0.7315181518151814
+Average accuracy training: 0.9992299229922992
+Average time elapsed: 0.7774333000183106
+
+
+
+With Hyperparameters :
+Time elapsed for training the data: 3.9167683124542236
+Accuracy testing: 0.7508250825082509
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 3.807605266571045
+Accuracy testing: 0.7788778877887789
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 4.1581830978393555
+Accuracy testing: 0.7755775577557755
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 4.663764238357544
+Accuracy testing: 0.7772277227722773
+Accuracy training: 1.0
+
+Time elapsed for training the data: 4.03906512260437
+Accuracy testing: 0.735973597359736
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 4.2098188400268555
+Accuracy testing: 0.768976897689769
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 5.430366277694702
+Accuracy testing: 0.7524752475247525
+Accuracy training: 0.9988998899889989
+
+Time elapsed for training the data: 5.679520606994629
+Accuracy testing: 0.7475247524752475
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 5.582239389419556
+Accuracy testing: 0.7557755775577558
+Accuracy training: 0.9994499449944995
+
+Time elapsed for training the data: 4.6425347328186035
+Accuracy testing: 0.7656765676567657
+Accuracy training: 0.9988998899889989
+
+Average accuracy testing: 0.7608910891089109
+Average accuracy training: 0.9991199119911991
+Average time elapsed: 4.612986588478089
+
+
+
 Cross fold validation: 100
-Cross fold validation: 0.8020768136557612
-Time elapsed for cross fold validation: 71.98484778404236
+Cross fold validation: 0.762263157894737
+Time elapsed for cross fold validation: 541.2269668579102
 
-
-
-
---Not to include in plots--
-Before Feature selection :
-Average accuracy testing: 0.8471577261809449
-Average accuracy training: 0.9995463037096343

@@ -10,8 +10,8 @@ import time
 
 class NeuralNetworkClassifier:
     def __init__(self, x_train, y_train):
-        self.__model = MLPClassifier(max_iter=2_000, activation='relu', solver='adam', alpha=0.0001,
-                                     hidden_layer_sizes=(100, 100))
+        self.__model = MLPClassifier(max_iter=1_500, activation='logistic', solver='adam', alpha=0.001,
+                                     hidden_layer_sizes=(50, 50))
         self.__x_train = x_train
         self.__y_train = y_train
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
     # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
 
-    df = pd.read_csv("Final_1_data.csv")
+    df = pd.read_csv("Final_data.csv")
     # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list
     # df['Provider Name'] = df['Provider Name'].apply(np.array)  # will transform that string to a list
 

@@ -6,3 +6,51 @@ Neural Network Accuracy train: 0.9994662396583934
 Cross fold validation: 100
 Cross fold validation: 0.7827311522048364
 Time elapsed for cross fold validation: 2411.796178817749
+
+
+
+
+--------------------With Hyperparameter Tuning--------------------
+Time elapsed for training the data: 13.857967615127563
+Accuracy testing: 0.8778877887788779
+Accuracy training: 0.8932893289328933
+
+Time elapsed for training the data: 12.29556918144226
+Accuracy testing: 0.8613861386138614
+Accuracy training: 0.8855885588558856
+
+Time elapsed for training the data: 17.056732654571533
+Accuracy testing: 0.8613861386138614
+Accuracy training: 0.9064906490649065
+
+Time elapsed for training the data: 14.113815546035767
+Accuracy testing: 0.8646864686468647
+Accuracy training: 0.8943894389438944
+
+Time elapsed for training the data: 14.290480375289917
+Accuracy testing: 0.8531353135313532
+Accuracy training: 0.8993399339933993
+
+Time elapsed for training the data: 15.839107990264893
+Accuracy testing: 0.8531353135313532
+Accuracy training: 0.8976897689768977
+
+Time elapsed for training the data: 12.481510877609253
+Accuracy testing: 0.8745874587458746
+Accuracy training: 0.8905390539053906
+
+Time elapsed for training the data: 13.331121683120728
+Accuracy testing: 0.8564356435643564
+Accuracy training: 0.9004400440044005
+
+Time elapsed for training the data: 15.80936074256897
+Accuracy testing: 0.8382838283828383
+Accuracy training: 0.9086908690869087
+
+Time elapsed for training the data: 13.996669054031372
+Accuracy testing: 0.8514851485148515
+Accuracy training: 0.9048404840484049
+
+Average accuracy testing: 0.8592409240924093
+Average accuracy training: 0.8981298129812982
+Average time elapsed: 14.307233572006226

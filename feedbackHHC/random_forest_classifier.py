@@ -17,7 +17,7 @@ class Random_Forest_Classifier:
         :param x_train: the training data
         :param y_train: the training labels
         """
-        self.__model = RandomForestClassifier()
+        self.__model = RandomForestClassifier(bootstrap=True, criterion='gini', max_depth=None, n_estimators=500)
         self.__x_train = x_train
         self.__y_train = y_train
 
@@ -46,16 +46,16 @@ class Random_Forest_Classifier:
 
 if __name__ == '__main__':
     # here, we will make a Hyperparameter tunning using Grid Search and Random Search for the Random Forest Classifier
-    model = RandomForestClassifier()
-    possible_parameters_rf = {
-        "n_estimators": [10, 100, 200, 500, 750, 1_000],
-        "criterion": ["gini", "entropy"],
-        # the maximum depth of the tree is represented by the nr of features which is 12
-        "max_depth": [None, 5, 7, 8, 9, 10],
-        # Bootstrap means that instead of training on all the observations,
-        # each tree of RF is trained on a subset of the observations
-        "bootstrap": [True, False]
-    }
+    # model = RandomForestClassifier()
+    # possible_parameters_rf = {
+    #     "n_estimators": [10, 100, 200, 500, 750, 1_000],
+    #     "criterion": ["gini", "entropy"],
+    #     # the maximum depth of the tree is represented by the nr of features which is 12
+    #     "max_depth": [None, 5, 7, 8, 9, 10],
+    #     # Bootstrap means that instead of training on all the observations,
+    #     # each tree of RF is trained on a subset of the observations
+    #     "bootstrap": [True, False]
+    # }
 
     # possible_parameters_rf = {
     #     'n_estimators': [50, 100, 300],
@@ -66,18 +66,18 @@ if __name__ == '__main__':
     # }
     #
     df = pd.read_csv("Final_data.csv")
-    x_train, labels_train, x_test, labels_test = (
-        util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
-
-    start_time = time.time()
-    best_parameters, best_score = random_search(possible_parameters_rf, model, x_train, labels_train)
-    print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
-    print(f"Time elapsed for random Search: {time.time() - start_time}")
-
-    start_time = time.time()
-    best_parameters, best_score = grid_search(possible_parameters_rf, model, x_train, labels_train)
-    print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
-    print(f"Time elapsed for grid Search: {time.time() - start_time}")
+    # x_train, labels_train, x_test, labels_test = (
+    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
+    #
+    # start_time = time.time()
+    # best_parameters, best_score = random_search(possible_parameters_rf, model, x_train, labels_train)
+    # print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
+    # print(f"Time elapsed for random Search: {time.time() - start_time}")
+    #
+    # start_time = time.time()
+    # best_parameters, best_score = grid_search(possible_parameters_rf, model, x_train, labels_train)
+    # print(f"Best parameters: {best_parameters} ; Best score: {best_score}")
+    # print(f"Time elapsed for grid Search: {time.time() - start_time}")
 
 
 
@@ -136,17 +136,17 @@ if __name__ == '__main__':
     # print(f"Average time elapsed: {sum(time_elapsed) / nr_tests}")
 
     # compute cross fold validation
-    # x1_train, labels1_train, x1_test, labels1_test = (
-    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.20))
-    #
-    # model_rf = Random_Forest_Classifier(x1_train, labels1_train)
-    # model_rf.train()
-    # start_time = time.time()
-    # cross_f_score = model_rf.cross_fold_validation()
-    # print(f"Cross fold validation: {len(cross_f_score)}")
-    # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
-    # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
-    #
+    x1_train, labels1_train, x1_test, labels1_test = (
+        util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.20))
+
+    model_rf = Random_Forest_Classifier(x1_train, labels1_train)
+    model_rf.train()
+    start_time = time.time()
+    cross_f_score = model_rf.cross_fold_validation()
+    print(f"Cross fold validation: {len(cross_f_score)}")
+    print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
+    print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
+
     # df = pd.read_csv("Final_data.csv")
     # # # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list
     # # # df['Provider Name'] = df['Provider Name'].apply(np.array)  # will transform that string to a list
