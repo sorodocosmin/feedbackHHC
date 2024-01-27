@@ -424,6 +424,30 @@ if selected == "Home":
             st.markdown(f'<img src="{gif_path}" alt="gif" width="500">', unsafe_allow_html=True)
     st.divider()
 
+    st.header('Tutorial Video')
+
+
+    # YouTube video URL
+    youtube_url = "https://www.youtube.com/watch?v=Vt26PTl9Abg"
+
+    st.write(
+        f"""
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 10px;">
+            <iframe 
+                src="https://www.youtube.com/embed/{youtube_url.split('=')[-1]}" 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;" 
+                frameborder="0" 
+                allowfullscreen
+            ></iframe>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # video_file = open('Similo_Tutorial3_compressed.mp4', 'rb')
+    # video_bytes = video_file.read()
+    # st.video(video_bytes)
+
     
 #Search Page
 if selected == 'Search':

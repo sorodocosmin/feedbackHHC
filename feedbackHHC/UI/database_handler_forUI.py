@@ -20,7 +20,7 @@ class DatabaseHandler:
                 host=db_host,
                 port=db_port
             )
-            print("Connection to PostgreSQL DB successful")
+            # print("Connection to PostgreSQL DB successful")
         except Exception as e:
             print(f"The error '{e}' occurred")
     

@@ -70,7 +70,7 @@ def preprocessing_part():
 
         """)
 
-    st.subheader("Transforming Dates info Numerical Values")
+    st.subheader("Transforming Dates into Numerical Values")
     st.write("""
         To facilitate the interpretation of dates, we transformed them into numerical values.
         The `Date Certified` column was transformed into the number of days since the agency was certified.
@@ -312,7 +312,7 @@ def preprocessing_part():
             tooltip=["Statistic", alt.Tooltip("Value", format=".2f")]  # Show tooltip on hover with two decimal places
         ).properties(
             width=alt.Step(100),  # Adjust chart width
-            height=500  # Adjust chart height
+            height=350  # Adjust chart height
         )
 
         # Add text labels to the bars
@@ -377,7 +377,7 @@ def feature_selection_part():
     st.write("""
     **Finnally**, after applying all the above steps (**Preprocessing** and **Feature Selection**) we started with
     [this dataset](https://github.com/sorodocosmin/feedbackHHC/blob/main/feedbackHHC/HH_Provider_Oct2023.csv)
-    and ended up with [this one](). Which is nice and ready to be used for training the ML models.
+    and ended up with [this one](https://github.com/sorodocosmin/feedbackHHC/blob/cosmin/feedbackHHC/Final_data.csv), which is nice and ready to be used for training the ML models.
     """)
 
 
