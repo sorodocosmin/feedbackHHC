@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 def behind_the_scenes_page():
     # Page title
@@ -222,6 +223,45 @@ def preprocessing_part():
 
     st.image("plot_outlier.png", width=700)
 
+    counts = [
+        7852, 7070, 6780, 6403, 6050, 5904, 5640, 5507, 5328, 5203, 4980, 4477, 4314, 3854,
+        3515, 3389, 3260, 3200, 3158, 3128, 2997, 2936, 2840, 2786, 2748, 2739, 2632, 2591,
+        2570, 2539, 2530, 2519, 2485, 2424
+    ]
+
+    # Create a line chart
+
+    chart_data = pd.DataFrame(
+        {
+            "Categories": [i for i in range(0, len(counts))],
+            "Number of rows": counts
+        }
+    )
+    # with st.expander("You can also see a graph here"):
+    #     st.line_chart(data=chart_data, x='Categories', y='Number of rows', color="#ffaa0088", use_container_width=True)
+
+    # Plot with Altair
+    chart = alt.Chart(chart_data).mark_line(color='orange').encode(
+        x=alt.X('Categories:Q', axis=alt.Axis(format='d')),  # Specify the number format as integers
+        y='Number of rows'
+    ).properties(
+        width=alt.Step(50),  # Adjust width between points
+        height=400  # Adjust height of the chart
+    ).interactive()  # Enable interactivity (including zooming)
+
+    # Add small circles (bullets)
+    circles = chart.mark_circle(color='orange', size=50).encode(
+        x='Categories',
+        y='Number of rows'
+    )
+
+    # Combine line and circles
+    chart_with_circles = chart + circles
+
+    # Display chart
+    with st.expander("A more detailed graph"):
+        st.altair_chart(chart_with_circles, use_container_width=True)
+
     st.subheader("Handling Missing Values")
     st.write("""
     
@@ -234,6 +274,65 @@ def preprocessing_part():
     the absence of values is unrelated to any specific pattern or factor, making it a suitable choice for scenarios
     where data is missing at random
     """)
+
+    data = {}
+    with open("../new_preprocess/mean_and_median.txt", "r") as file:
+        lines = file.readlines()
+        column = ""
+        for line in lines:
+            if line.startswith("Column: "):
+                column = line[len("Column: "):].strip()
+                data[column] = {"Mean": None, "Median": None}
+            elif line.startswith("Mean: "):
+                data[column]["Mean"] = float(line[len("Mean: "):].strip())
+            elif line.startswith("Median: "):
+                data[column]["Median"] = float(line[len("Median: "):].strip())
+
+    # Step 2: Allow the user to select a column
+    selected_column = st.selectbox("You can find more about the mean/median of the datas, by selecting a specific column", list(data.keys()))
+
+    # Step 3: Display the mean and median values for the selected column
+    mean_value = data[selected_column]["Mean"]
+    median_value = data[selected_column]["Median"]
+    if mean_value is not None and median_value is not None:
+
+    # Step 4: Plot the mean and median values in a bar chart
+        chart_data = pd.DataFrame({
+            "Statistic": ["Mean", "Median"],
+            "Value": [mean_value, median_value]
+        })
+
+        # Customize the chart
+        bar_chart = alt.Chart(chart_data).mark_bar(
+            size=100,  # Adjust bar size
+            color="orange"  # Set bar color
+        ).encode(
+            x=alt.X("Statistic", title=None),  # Remove axis title
+            y=alt.Y("Value", title=None),  # Remove axis title
+            tooltip=["Statistic", alt.Tooltip("Value", format=".2f")]  # Show tooltip on hover with two decimal places
+        ).properties(
+            width=alt.Step(100),  # Adjust chart width
+            height=500  # Adjust chart height
+        )
+
+        # Add text labels to the bars
+        text = bar_chart.mark_text(
+            align="center",  # Align text at center
+            baseline="middle",  # Align text vertically at middle
+            dx=0,  # Offset in x-direction
+            dy=5  # Offset in y-direction
+        ).encode(
+            text=alt.Text("Value", format=".2f")  # Format text to two decimal places
+        )
+
+        # Combine bar chart and text labels
+        chart = (bar_chart + text)
+
+        # Enable interactivity (including zooming)
+        chart = chart.interactive()
+
+        # Display the chart
+        st.altair_chart(chart, use_container_width=True)
 
 
 def feature_selection_part():

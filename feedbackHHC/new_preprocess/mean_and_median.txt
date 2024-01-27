@@ -1,0 +1,131 @@
+Column: How often the home health team began their patients' care in a timely manner
+Mean: 96.9125283125708
+Median: 98.5
+
+Column: How often the home health team determined whether patients received a flu shot for the current flu season
+Mean: 74.85413556285458
+Median: 75.8
+
+Column: How often patients got better at walking or moving around
+Mean: 82.89881194309832
+Median: 84.2
+
+Column: How often patients got better at getting in and out of bed
+Mean: 85.32942247228198
+Median: 86.3
+
+Column: How often patients got better at bathing
+Mean: 86.91976606204442
+Median: 87.9
+
+Column: How often patients' breathing improved
+Mean: 86.52451682176091
+Median: 87.7
+
+Column: How often patients got better at taking their drugs correctly by mouth
+Mean: 82.84818596171377
+Median: 83.8
+
+Column: How often home health patients had to be admitted to the hospital
+Mean: 13.928120031796503
+Median: 14.0
+
+Column: How often patients receiving home health care needed urgent, unplanned care in the ER without being admitted
+Mean: 12.005808029345832
+Median: 11.9
+
+Column: Changes in skin integrity post-acute care: pressure ulcer/injury
+Mean: 0.24621105527638193
+Median: 0.1
+
+Column: How often physician-recommended actions to address medication issues were completely timely
+Mean: 97.5862030411449
+Median: 98.3
+
+Column: Percent of Residents Experiencing One or More Falls with Major Injury
+Mean: 0.8616616384311905
+Median: 0.8
+
+Column: Application of Percent of Long Term Care Hospital Patients with an Admission and Discharge Functional Assessment and a Care Plan that Addresses Function
+Mean: 99.54107560405299
+Median: 99.8
+
+Column: DTC Numerator
+Mean: 481.999422965955
+Median: 339.0
+
+Column: DTC Denominator
+Mean: 566.4264967397747
+Median: 424.0
+
+Column: DTC Observed Rate
+Mean: 76.7758611024603
+Median: 77.03
+
+Column: DTC Risk-Standardized Rate
+Mean: 82.44304347826088
+Median: 83.28
+
+Column: DTC Risk-Standardized Rate (Lower Limit)
+Mean: 77.939240913477
+Median: 78.9
+
+Column: DTC Risk-Standardized Rate (Upper Limit)
+Mean: 86.76990906138359
+Median: 87.13
+
+Column: PPR Numerator
+Mean: 9.169310217631871
+Median: 7.0
+
+Column: PPR Denominator
+Mean: 219.96565934065933
+Median: 172.0
+
+Column: PPR Observed Rate
+Mean: 3.518328112764292
+Median: 3.44
+
+Column: PPR Risk-Standardized Rate
+Mean: 3.8341559999999997
+Median: 3.81
+
+Column: PPR Risk-Standardized Rate (Lower Limit)
+Mean: 2.7181559707554834
+Median: 2.68
+
+Column: PPR Risk-Standardized Rate (Upper Limit)
+Mean: 5.336983285772523
+Median: 5.34
+
+Column: PPH Numerator
+Mean: 26.390330188679247
+Median: 22.0
+
+Column: PPH Denominator
+Mean: 253.05365474339035
+Median: 211.0
+
+Column: PPH Observed Rate
+Mean: 9.669391619661564
+Median: 9.655000000000001
+
+Column: PPH Risk-Standardized Rate
+Mean: 9.796340269277845
+Median: 9.6
+
+Column: PPH Risk-Standardized Rate (Lower Limit)
+Mean: 6.937755937755938
+Median: 6.785
+
+Column: PPH Risk-Standardized Rate (Upper Limit)
+Mean: 13.638885232414646
+Median: 13.48
+
+Column: How much Medicare spends on an episode of care at this agency, compared to Medicare spending across all agencies nationally
+Mean: 0.9854981699877999
+Median: 0.99
+
+Column: No. of episodes to calc how much Medicare spends per episode of care at agency, compared to spending at all agencies (national)
+Mean: 756.6818936877077
+Median: 656.0

@@ -7,7 +7,6 @@ from hyperparameter_tunning import grid_search
 from hyperparameter_tunning import random_search
 import pandas as pd
 import numpy as np
-import util
 
 
 class Random_Forest_Classifier:
@@ -45,6 +44,7 @@ class Random_Forest_Classifier:
 
 
 if __name__ == '__main__':
+    pass
     # here, we will make a Hyperparameter tunning using Grid Search and Random Search for the Random Forest Classifier
     # model = RandomForestClassifier()
     # possible_parameters_rf = {
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     #     'bootstrap': [True, False]
     # }
     #
-    df = pd.read_csv("Final_data.csv")
+    # df = pd.read_csv("Final_data.csv")
     # x_train, labels_train, x_test, labels_test = (
     #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.25))
     #
@@ -136,16 +136,16 @@ if __name__ == '__main__':
     # print(f"Average time elapsed: {sum(time_elapsed) / nr_tests}")
 
     # compute cross fold validation
-    x1_train, labels1_train, x1_test, labels1_test = (
-        util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.20))
-
-    model_rf = Random_Forest_Classifier(x1_train, labels1_train)
-    model_rf.train()
-    start_time = time.time()
-    cross_f_score = model_rf.cross_fold_validation()
-    print(f"Cross fold validation: {len(cross_f_score)}")
-    print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
-    print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
+    # x1_train, labels1_train, x1_test, labels1_test = (
+    #     util.split_train_and_test_data(df, 'Quality of patient care star rating', test_size=0.20))
+    #
+    # model_rf = Random_Forest_Classifier(x1_train, labels1_train)
+    # model_rf.train()
+    # start_time = time.time()
+    # cross_f_score = model_rf.cross_fold_validation()
+    # print(f"Cross fold validation: {len(cross_f_score)}")
+    # print(f"Cross fold validation: {np.mean(cross_f_score)}")  # by default, 100 folds
+    # print(f"Time elapsed for cross fold validation: {time.time() - start_time}")
 
     # df = pd.read_csv("Final_data.csv")
     # # # df['Provider Name'] = df['Provider Name'].apply(eval)  # will transform that string to a list

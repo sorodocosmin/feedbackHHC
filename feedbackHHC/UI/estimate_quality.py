@@ -14,7 +14,7 @@ import random_forest_classifier as rf
 
 @st.cache_data
 def initialize_classifiers():
-    print("Initialize classifiers")
+    # print("Initialize classifiers")
 
     df = pd.read_csv('../Final_data.csv')
     x_train, labels_train, dict_classes_original = (
@@ -56,10 +56,10 @@ def estimate_quality(data, classifier):
     if classifier == model_nn:
         scaler = classifier.get_scaler()
         data = scaler.transform(data)
-        print("Am intart")
-        print(data)
+        # print("Am intart")
+        # print(data)
     prediction = classifier.predict(data)
-    print("Prediction: ", prediction)
+    # print("Prediction: ", prediction)
     return prediction
 
 
@@ -92,17 +92,24 @@ def get_user_input():
             user_input[name] = st.checkbox(name + '?' + ' \n' + ' Check the box if yes.')
 
         elif name.startswith('How often'):  # float number from 0 to 100
-            user_input[name] = st.number_input(name + '? \n' + ' Enter a percent from 0.0 to 100.',
-                                               min_value=0.0, max_value=100.0, step=0.1)
-        elif name.startswith('Changes'):  # number from 0 to 2
-            user_input[name] = st.number_input(name + '? \n' + ' Enter a number from 0.0 to 1.',
-                                               min_value=0.0, max_value=2.0, step=0.1)
+            # user_input[name] = st.number_input(name + '? \n' + ' Enter a percent from 0.0 to 100.',
+            #                                    min_value=0.0, max_value=100.0, step=0.1)
+            user_input[name] = st.slider(name + "? \n", 0.0, 100.0)
+        elif name.startswith('Changes'):  # number from 0 to 1
+            # user_input[name] = st.number_input(name + '? \n' + ' Enter a number from 0.0 to 1.',
+            #                                    min_value=0.0, max_value=1.0, step=0.1)
+            user_input[name] = st.slider(name + "? \n", 0.0, 1.0)
+
         elif name.endswith('Rate'):  # number from 0 to 100
-            user_input[name] = st.number_input(name + get_explanation(name) + '? Enter a percent from 0.0 to 100.',
-                                               min_value=0.0, max_value=100.0, step=0.1)
+            # user_input[name] = st.number_input(name + get_explanation(name) + '? Enter a percent from 0.0 to 100.',
+            #                                    min_value=0.0, max_value=100.0, step=0.1)
+            user_input[name] = st.slider(name + "? \n", 0.0, 100.0)
+
         else:  # number from 0
-            user_input[name] = st.number_input(name + get_explanation(name) + '? \n' + ' Enter a positive number.',
-                                               min_value=0.0, step=0.1)
+            # user_input[name] = st.number_input(name + get_explanation(name) + '? \n' + ' Enter a positive number.',
+            #                                    min_value=0.0, step=0.1)
+            user_input[name] = st.slider(name + "? \n", 0.0, 100.0)
+
 
     insert_newline()
     algorithm = st.selectbox("Select the classification algorithm",
@@ -200,12 +207,12 @@ def main_page():
     st.title("Quality Estimator")
 
     # insert an explanation of how this estimator works and how to use it
-    st.warning("This is a quality estimator for HealInsight.\n"
+    st.info("This is a quality estimator for HealInsight.\n"
 "It uses a machine learning algorithm to estimate the quality of a HHC based on the user input.\n"
 "The user input is a set of features that describe the best the service.\n")
 
 
-    st.warning("""Then a classification will estimated the quality of the HHC.
+    st.info("""Then a classification will estimated the quality of the HHC.
                 The classification algorithms are trained on a public dataset containing information about HHCs.
                 The dataset is available at 'https://data.cms.gov/provider-data/dataset/6jpm-sxkc'.""")
     insert_newline(2)
@@ -236,7 +243,7 @@ def main_page():
 
         # Get the original quality value
         quality = dict_class_original[prediction]
-        print(f"Quality: {quality}")
+        # print(f"Quality: {quality}")
 
         st.header("Quality Estimation Result:")
         st.write(f"The estimated quality is: {quality}")

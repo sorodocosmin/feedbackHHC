@@ -130,7 +130,7 @@ def create_adaboost_chart():
             y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
             x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
             color=alt.Color('Algorithms:N', legend=None)
-        ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
+        ).properties(width=500, height=400, title="Time took for hyperparameters tuning (AdaBoostClassifier)")
 
         st.altair_chart(chart1, use_container_width=True)
 
@@ -158,7 +158,7 @@ def create_adaboost_chart():
             y=alt.Y('Accuracy:N', axis=alt.Axis(title='Accuracy')),
             x=alt.X('Score:Q', axis=alt.Axis(title='Score')),
             color=alt.Color('Accuracy:N', legend=None)
-        ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (AdaBoostClassifier)")
+        ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameters tuning (AdaBoostClassifier)")
 
         max_line = alt.Chart(pd.DataFrame({'y': [1]})).mark_rule(color='red', strokeWidth=2).encode(y='y')
         final_chart3 = chart3 + max_line
@@ -174,7 +174,7 @@ def create_adaboost_chart():
             y=alt.Y('When:N', axis=alt.Axis(title='')),
             x=alt.X('Time in seconds:Q', axis=alt.Axis(title='Time in seconds')),
             color=alt.Color('When:N', legend=None)
-        ).properties(width=500, height=400, title="Time took for hyperparameter tuning (AdaBoostClassifier)")
+        ).properties(width=500, height=400, title="Time took on training before and after hyperparameters tuning (AdaBoostClassifier)")
 
         st.altair_chart(chart4, use_container_width=True)
 
@@ -267,7 +267,7 @@ def create_randomforest_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (RandomForestClassifier)")
+    ).properties(width=500, height=400, title="Time took for hyperparameters tuning (RandomForestClassifier)")
 
     st.altair_chart(chart1, use_container_width=True)
 
@@ -295,7 +295,7 @@ def create_randomforest_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Accuracy:Q', axis=alt.Axis(title='Accuracy')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (RandomForestClassifier)")
+    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameters tuning (RandomForestClassifier)")
 
     st.altair_chart(chart3, use_container_width=True)
 
@@ -309,7 +309,7 @@ def create_randomforest_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Time took on training before and after hyperparameter tuning (RandomForestClassifier)")
+    ).properties(width=500, height=400, title="Time took on training before and after hyperparameters tuning (RandomForestClassifier)")
 
     st.altair_chart(chart4, use_container_width=True)
 
@@ -339,7 +339,7 @@ def create_neuralnetwork_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Time took for hyperparameter tuning (Neuronal Network)")
+    ).properties(width=500, height=400, title="Time took for hyperparameters tuning (Neuronal Network)")
 
     st.altair_chart(chart1, use_container_width=True)
 
@@ -367,7 +367,7 @@ def create_neuralnetwork_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Accuracy:Q', axis=alt.Axis(title='Accuracy')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameter tuning (Neuronal Network)")
+    ).properties(width=500, height=400, title="Accuracy testing before and after hyperparameters tuning (Neuronal Network)")
 
     st.altair_chart(chart3, use_container_width=True)
 
@@ -381,7 +381,7 @@ def create_neuralnetwork_chart():
         y=alt.Y('Algorithms:N', axis=alt.Axis(title='Algorithms')),
         x=alt.X('Time(in seconds):Q', axis=alt.Axis(title='Time (in seconds)')),
         color=alt.Color('Algorithms:N', legend=None)
-    ).properties(width=500, height=400, title="Time took on training before and after hyperparameter tuning (Neuronal Network)")
+    ).properties(width=500, height=400, title="Time took on training before and after hyperparameters tuning (Neuronal Network)")
 
     st.altair_chart(chart4, use_container_width=True)
 

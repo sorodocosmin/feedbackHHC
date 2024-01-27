@@ -263,6 +263,12 @@ class NewPreprocess:
         column_values = self.__df[column]
 
         mean = np.nanmean(column_values)
+        median = np.nanmedian(column_values)
+        with open("mean_and_median.txt", "a") as f:
+            f.write(f"Column: {column}\n")
+            f.write(f"Mean: {mean}\n")
+            f.write(f"Median: {median}\n\n")
+
         for index, row in self.__df.iterrows():
             if pd.isna(row[column]):
                 self.__df.loc[index, column] = mean.round(5)
@@ -322,7 +328,7 @@ def main():
     preprocess.apply_remove_outliers_and_replace_unknown_with_mean()
     df = preprocess.get_df()
 
-    df.to_csv("Datas_After_Preprocessing.csv", index=False)
+    # df.to_csv("Datas_After_Preprocessing.csv", index=False)
 
 
 if __name__ == '__main__':
