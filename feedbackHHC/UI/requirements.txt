@@ -3,7 +3,7 @@ pandas==1.2.4
 plotly==5.13.1
 pydeck==0.8.0
 scikit_learn==1.0.1
-streamlit==1.21.0
+streamlit==1.30.0
 -r https://raw.githubusercontent.com/snowflakedb/snowflake-connector-python/main/tested_requirements/requirements_39.reqs
 streamlit_lottie==0.0.3
 streamlit_option_menu==0.3.2
